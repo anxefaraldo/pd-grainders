@@ -64,7 +64,7 @@
 #X obj 374 -866 catch~ \$0-RightOut;
 #X obj 353 -910 catch~ \$0-LeftOut;
 #X obj 133 -840 s~ \$0-input;
-#N canvas 599 22 173 700 grains 1;
+#N canvas 599 22 173 700 grains 0;
 #X obj 25 50 a.inputGrain 1002 1;
 #X obj 25 75 a.inputGrain 1002 2;
 #X obj 25 100 a.inputGrain 1002 3;
@@ -283,29 +283,29 @@ or the total range.;
 #X obj 40 -952 cnv 15 80 320 empty empty MEAN 28 315 1 10 -66577 -191407
 0;
 #X obj 47 -821 nbx 5 20 5 100 0 0 \$0-grainDur.m \$0-load.grainDur.m
-duration 0 -14 1 14 -1 -262144 -262144 12 256;
+duration 0 -14 1 14 -1 -262144 -262144 90 256;
 #X obj 47 -871 nbx 5 20 20 500 0 0 \$0-iot.m \$0-load.iot.m iot 0 -14
-1 14 -1 -262144 -262144 500 256;
+1 14 -1 -262144 -262144 100 256;
 #X obj 47 -922 nbx 5 20 0 10000 0 0 \$0-delread.m \$0-load.delread.m
-delread 0 -14 1 14 -1 -262144 -262144 500 256;
+delread 0 -14 1 14 -1 -262144 -262144 100 256;
 #X obj 47 -671 nbx 5 20 -12 12 0 0 \$0-pitch.m \$0-load.pitch.m pitch
 0 -14 1 14 -1 -262144 -262144 0 256;
 #X obj 47 -771 nbx 5 20 1 99 0 0 \$0-env.m \$0-load.env.m envelope
 0 -14 1 14 -1 -262144 -262144 10 256;
 #X obj 47 -721 nbx 5 20 60 100 0 0 \$0-amp.m \$0-load.amp.m dynamics
-0 -14 1 14 -1 -262144 -262144 100 256;
+0 -14 1 14 -1 -262144 -262144 90 256;
 #X obj -13 -922 nbx 2 20 0 20 0 0 \$0-voices \$0-load.voices grains
-0 -14 1 14 -33289 -262144 -262144 20 256;
+0 -14 1 14 -33289 -262144 -262144 0 256;
 #X obj 124 -952 cnv 15 56 320 empty empty DEVIATION 2 315 1 10 -99865
 -33289 0;
 #X obj 129 -821 nbx 3 20 0 100 0 0 \$0-grainDur.d \$0-load.grainDur.d
-empty 52 8 1 14 -1 -262144 -262144 100 256;
+empty 52 8 1 14 -1 -262144 -262144 0 256;
 #X obj 128 -871 nbx 3 20 0 100 0 0 \$0-iot.d \$0-load.iot.d empty 52
 8 1 14 -1 -262144 -262144 100 256;
 #X obj 130 -922 nbx 3 20 0 100 0 0 \$0-delread.d \$0-load.delread.d
-empty 62 8 1 14 -1 -262144 -1 100 256;
+empty 62 8 1 14 -1 -262144 -1 0 256;
 #X obj 128 -671 nbx 3 20 0 100 0 0 \$0-pitch.d \$0-load.pitch.d empty
-52 8 1 14 -1 -262144 -1 0 256;
+52 8 1 14 -1 -262144 -1 1 256;
 #X obj 128 -721 nbx 3 20 0 100 0 0 \$0-amp.d \$0-load.amp.d empty 52
 8 1 14 -1 -262144 -262144 100 256;
 #X obj 128 -771 nbx 3 20 0 100 0 0 \$0-env.d \$0-load.env.d empty 52
