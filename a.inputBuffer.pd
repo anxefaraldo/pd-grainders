@@ -1,0 +1,6 @@
+#N canvas 0 22 331 111 10;
+#X obj -20 38 hip~ 5;
+#X obj -20 14 r~ \$1-input;
+#X obj -20 60 delwrite~ \$1-deline \$2;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
