@@ -1,0 +1,11 @@
+#N canvas 241 184 450 300 10;
+#X obj 77 47 unpack;
+#X obj 56 71 gauss 1 0;
+#X obj 56 3 inlet;
+#X obj 77 25 r \$2-\$1;
+#X obj 56 95 outlet;
+#X connect 0 0 1 2;
+#X connect 0 1 1 1;
+#X connect 1 0 4 0;
+#X connect 2 0 1 0;
+#X connect 3 0 0 0;
