@@ -1,9 +1,95 @@
-#N canvas 929 22 303 403 10;
-#X obj -19 -955 cnv 15 300 400 empty empty empty 20 12 1 20 -1 -228856
+#N canvas 801 194 214 368 10;
+#X obj -19 -955 cnv 15 210 365 empty empty empty 20 12 1 20 -1 -228856
 0;
-#N canvas 325 181 663 339 guts 0;
-#X obj 138 -789 s \$0-randCurve;
-#X floatatom 138 -810 5 0 0 0 - - -;
+#X obj -14 -645 bng 15 250 50 0 empty empty init 20 7 1 12 -191407
+-262144 -262144;
+#N canvas 578 58 254 312 settings 0;
+#X floatatom 96 36 10 0 0 0 - #0-set.buffSize #0-init.buffSize;
+#X text -13 36 buffer size (ms):;
+#X text -31 216 max. amplitude (dB):;
+#X text -31 196 min. amplitude (dB):;
+#X text -61 176 max. grain duration (ms):;
+#X text -61 156 min. grain duration (ms):;
+#X text -55 236 min. transposition (st):;
+#X text -55 256 max. transposition (st):;
+#X text -62 17 =====================================;
+#X text 47 6 INSTRUMENT SETTINGS;
+#X text -43 56 max. number of voices:;
+#X floatatom 96 56 10 0 0 0 - #0-set.maxVoices #0-init.maxVoices;
+#X floatatom 96 156 10 0 0 0 - #0-set.grainDur.min #0-init.grainDur.min
+;
+#X floatatom 96 176 10 0 0 0 - #0-set.grainDur.max #0-init.grainDur.max
+;
+#X floatatom 96 196 10 0 0 0 - #0-set.amp.min #0-init.amp.min;
+#X floatatom 96 216 10 0 0 0 - #0-set.amp.max #0-init.amp.max;
+#X floatatom 96 236 10 0 0 0 - #0-set.pitch.min #0-init.pitch.min;
+#X floatatom 96 256 10 0 0 0 - #0-set.pitch.max #0-init.pitch.max;
+#N canvas 805 22 374 478 defaults 0;
+#X obj 7 -68 \$0;
+#X obj 7 -118 r \$0-pre.load;
+#X obj 7 -95 del 100;
+#X msg 7 -46 \; \$1-set.buffSize 10000 \; \$1-set.maxVoices 50 \; \$1-set.iot.min
+20 \; \$1-set.iot.max 500 \; \$1-set.grainDur.min 5 \; \$1-set.grainDur.max
+100 \; \$1-set.env.min 1 \; \$1-set.env.max 99 \; \$1-set.amp.min 60
+\; \$1-set.amp.max 100 \; \$1-set.pitch.min -12 \; \$1-set.pitch.max
+12;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X restore -58 3 pd defaults;
+#X floatatom 96 76 10 0 0 0 - #0-set.iot.min #0-init.iot.min;
+#X floatatom 96 96 10 0 0 0 - #0-set.iot.max #0-init.iot.max;
+#X text -73 76 min. inter-onset time (ms):;
+#X text -73 96 max. inter-onset time (ms):;
+#X floatatom 96 116 10 0 0 0 - #0-set.env.min #0-init.env.min;
+#X floatatom 96 136 10 0 0 0 - #0-set.env.max #0-init.env.max;
+#X text -49 116 min. envelope (attack):;
+#X text -43 136 max. envelope (decay):;
+#X obj 96 277 bng 15 250 50 0 \$0-apply empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 5 276 apply changes:;
+#X restore 49 -625 pd settings;
+#N canvas 502 54 450 300 notes 0;
+#X text 8 44 - PAN follows a triangular random distribution.;
+#X text 8 4 - Triangular random distribution with an exponential factor
+for most parameters.;
+#X text 8 104 - Deviations from the mean are expressed in percentage
+or the total range.;
+#X text 8 74 - Values ouside the valid ranges are mirrored back.;
+#X restore 129 -625 pd notes;
+#X obj 40 -952 cnv 15 80 320 empty empty MEAN 28 315 1 10 -66577 -191407
+0;
+#X obj 47 -821 nbx 5 20 5 100 0 0 \$0-grainDur.m \$0-load.grainDur.m
+duration 0 -14 1 14 -1 -262144 -262144 100 256;
+#X obj 47 -871 nbx 5 20 20 500 0 0 \$0-iot.m \$0-load.iot.m iot 0 -14
+1 14 -1 -262144 -262144 260 256;
+#X obj 47 -922 nbx 5 20 0 10000 0 0 \$0-delread.m \$0-load.delread.m
+delread 0 -14 1 14 -1 -262144 -262144 1000 256;
+#X obj 47 -671 nbx 5 20 -12 12 0 0 \$0-pitch.m \$0-load.pitch.m pitch
+0 -14 1 14 -1 -262144 -262144 0 256;
+#X obj 47 -771 nbx 5 20 1 99 0 0 \$0-env.m \$0-load.env.m envelope
+0 -14 1 14 -1 -262144 -262144 1 256;
+#X obj 47 -721 nbx 5 20 60 100 0 0 \$0-amp.m \$0-load.amp.m dynamics
+0 -14 1 14 -1 -262144 -262144 100 256;
+#X obj -13 -922 nbx 2 20 0 50 0 0 \$0-voices \$0-load.voices grains
+0 -14 1 14 -33289 -262144 -262144 36 256;
+#X obj 124 -952 cnv 15 56 320 empty empty DEVIATION 2 315 1 10 -99865
+-33289 0;
+#X obj 129 -821 nbx 3 20 0 100 0 0 \$0-grainDur.d \$0-load.grainDur.d
+empty 52 8 1 14 -1 -262144 -262144 27 256;
+#X obj 128 -871 nbx 3 20 0 100 0 0 \$0-iot.d \$0-load.iot.d empty 52
+8 1 14 -1 -262144 -262144 100 256;
+#X obj 130 -922 nbx 3 20 0 100 0 0 \$0-delread.d \$0-load.delread.d
+empty 62 8 1 14 -1 -262144 -1 30 256;
+#X obj 128 -671 nbx 3 20 0 100 0 0 \$0-pitch.d \$0-load.pitch.d empty
+52 8 1 14 -1 -262144 -1 1 256;
+#X obj 128 -721 nbx 3 20 0 100 0 0 \$0-amp.d \$0-load.amp.d empty 52
+8 1 14 -1 -262144 -262144 100 256;
+#X obj 128 -771 nbx 3 20 0 100 0 0 \$0-env.d \$0-load.env.d empty 52
+8 1 14 -1 -262144 -1 0 256;
+#N canvas 1115 34 581 524 patch 1;
+#X obj 180 -806 s \$0-randCurve;
+#X floatatom 180 -827 5 0 0 0 - - -;
 #N canvas 372 349 435 317 multiple-instances 0;
 #X obj 32 89 until;
 #X obj 58 139 + 1;
@@ -56,14 +142,13 @@
 #X connect 20 0 12 0;
 #X connect 20 0 2 0;
 #X connect 22 0 8 0;
-#X restore 6 -697 pd multiple-instances;
-#X obj 353 -889 hip~ 5;
-#X obj 374 -843 hip~ 5;
-#X obj 7 -901 loadbang;
-#X obj 353 -820 dac~;
-#X obj 374 -866 catch~ \$0-RightOut;
-#X obj 353 -910 catch~ \$0-LeftOut;
-#X obj 133 -840 s~ \$0-input;
+#X restore 180 -873 pd multiple-instances;
+#X obj -67 -636 hip~ 5;
+#X obj -46 -590 hip~ 5;
+#X obj -67 -437 dac~;
+#X obj -46 -613 catch~ \$0-RightOut;
+#X obj -67 -657 catch~ \$0-LeftOut;
+#X obj -67 -726 s~ \$0-input;
 #N canvas 599 22 173 700 grains 0;
 #X obj 25 50 a.inputGrain 1002 1;
 #X obj 25 75 a.inputGrain 1002 2;
@@ -85,14 +170,41 @@
 #X obj 25 475 a.inputGrain 1002 18;
 #X obj 25 500 a.inputGrain 1002 19;
 #X obj 25 525 a.inputGrain 1002 20;
-#X restore 6 -677 pd grains;
-#X text 122 -679 (grain and input instances are placed inside the subpatches)
-;
+#X obj 25 550 a.inputGrain 1002 21;
+#X obj 25 575 a.inputGrain 1002 22;
+#X obj 25 600 a.inputGrain 1002 23;
+#X obj 25 625 a.inputGrain 1002 24;
+#X obj 25 650 a.inputGrain 1002 25;
+#X obj 25 675 a.inputGrain 1002 26;
+#X obj 25 700 a.inputGrain 1002 27;
+#X obj 25 725 a.inputGrain 1002 28;
+#X obj 25 750 a.inputGrain 1002 29;
+#X obj 25 775 a.inputGrain 1002 30;
+#X obj 25 800 a.inputGrain 1002 31;
+#X obj 25 825 a.inputGrain 1002 32;
+#X obj 25 850 a.inputGrain 1002 33;
+#X obj 25 875 a.inputGrain 1002 34;
+#X obj 25 900 a.inputGrain 1002 35;
+#X obj 25 925 a.inputGrain 1002 36;
+#X obj 25 950 a.inputGrain 1002 37;
+#X obj 25 975 a.inputGrain 1002 38;
+#X obj 25 1000 a.inputGrain 1002 39;
+#X obj 25 1025 a.inputGrain 1002 40;
+#X obj 25 1050 a.inputGrain 1002 41;
+#X obj 25 1075 a.inputGrain 1002 42;
+#X obj 25 1100 a.inputGrain 1002 43;
+#X obj 25 1125 a.inputGrain 1002 44;
+#X obj 25 1150 a.inputGrain 1002 45;
+#X obj 25 1175 a.inputGrain 1002 46;
+#X obj 25 1200 a.inputGrain 1002 47;
+#X obj 25 1225 a.inputGrain 1002 48;
+#X obj 25 1250 a.inputGrain 1002 49;
+#X obj 25 1275 a.inputGrain 1002 50;
+#X restore 313 -873 pd grains;
 #N canvas 503 179 220 83 input 0;
 #X obj 25 25 a.inputBuffer 1002 10000;
-#X restore 67 -677 pd input;
-#X msg 7 -736 \; pd dsp 1;
-#N canvas 700 124 501 598 mapping... 0;
+#X restore 374 -873 pd input;
+#N canvas 460 22 501 598 mapping... 0;
 #X msg -395 -831 range \$1 \$2;
 #X obj -395 -853 pack 0 0;
 #X obj -395 -877 t b f;
@@ -191,123 +303,79 @@
 #X connect 48 0 2 0;
 #X connect 48 0 13 0;
 #X connect 49 0 4 0;
-#X restore 6 -657 pd mapping...;
-#X obj 7 -925 inlet;
-#X msg 7 -857 bang \; pd dsp 0 \; \$1-pre.load bang;
-#X obj 7 -879 \$0;
-#X obj 15 -785 s \$0-loadbang;
-#X msg 133 -905 station \$1;
-#X floatatom 133 -926 5 0 7 0 - - -;
-#X obj 133 -884 radioin 6;
-#X obj 7 -761 del 500;
-#X obj 500 -845 r \$0-loadbang;
-#X obj 7 -808 del 1000;
-#X obj 500 -823 \$0;
-#X msg 500 -801 \; \$1-load.voices 0 \; \$1-load.delread.m 100 \; \$1-load.iot.m
-100 \; \$1-load.grainDur.m 90 \; \$1-load.env.m 10 \; \$1-load.amp.m
-90 \; \$1-load.pitch.m 0 \; \$1-load.delread.d 0 \; \$1-load.iot.d
-100 \; \$1-load.grainDur.d 0 \; \$1-load.env.d 5 \; \$1-load.amp.d
-100 \; \$1-load.pitch.d 1;
-#X connect 1 0 0 0;
-#X connect 3 0 6 0;
-#X connect 4 0 6 1;
-#X connect 5 0 17 0;
-#X connect 7 0 4 0;
-#X connect 8 0 3 0;
-#X connect 15 0 5 0;
-#X connect 16 0 24 0;
-#X connect 17 0 16 0;
-#X connect 19 0 21 0;
-#X connect 20 0 19 0;
-#X connect 21 0 9 0;
-#X connect 22 0 13 0;
-#X connect 23 0 25 0;
-#X connect 24 0 18 0;
-#X connect 24 0 22 0;
-#X connect 25 0 26 0;
-#X restore -15 -587 pd guts;
-#X obj -15 -607 bng 15 250 50 0 empty \$0-apply init 20 7 1 12 -191407
--262144 -262144;
-#N canvas 953 425 271 337 settings 0;
-#X floatatom 96 36 10 0 0 0 - #0-set.buffSize #0-init.buffSize;
-#X text -13 36 buffer size (ms):;
-#X text -31 216 max. amplitude (dB):;
-#X text -31 196 min. amplitude (dB):;
-#X text -61 176 max. grain duration (ms):;
-#X text -61 156 min. grain duration (ms):;
-#X text -55 236 min. transposition (st):;
-#X text -55 256 max. transposition (st):;
-#X text -62 17 =====================================;
-#X text 47 6 INSTRUMENT SETTINGS;
-#X text -43 56 max. number of voices:;
-#X floatatom 96 56 10 0 0 0 - #0-set.maxVoices #0-init.maxVoices;
-#X floatatom 96 156 10 0 0 0 - #0-set.grainDur.min #0-init.grainDur.min
+#X restore 231 -895 pd mapping...;
+#X msg -67 -875 station \$1;
+#X floatatom -67 -896 5 0 7 0 - - -;
+#X obj -67 -834 radioin 6;
+#X obj 19 -881 adc~ 1;
+#X obj 19 -789 *~;
+#X obj 34 -814 line~;
+#X msg 34 -834 \$1 100;
+#X obj -8 -461 *~;
+#X obj 7 -506 line~;
+#X msg 7 -526 \$1 100;
+#X obj -59 -854 tgl 15 1 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj -67 -748 +~;
+#X obj 34 -854 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 178 -854 (grain and input instances inside the subpatches)
 ;
-#X floatatom 96 176 10 0 0 0 - #0-set.grainDur.max #0-init.grainDur.max
-;
-#X floatatom 96 196 10 0 0 0 - #0-set.amp.min #0-init.amp.min;
-#X floatatom 96 216 10 0 0 0 - #0-set.amp.max #0-init.amp.max;
-#X floatatom 96 236 10 0 0 0 - #0-set.pitch.min #0-init.pitch.min;
-#X floatatom 96 256 10 0 0 0 - #0-set.pitch.max #0-init.pitch.max;
-#N canvas 805 22 374 478 defaults 0;
-#X obj 7 -68 \$0;
-#X obj 7 -118 r \$0-pre.load;
-#X obj 7 -95 del 100;
-#X msg 7 -46 \; \$1-set.buffSize 10000 \; \$1-set.maxVoices 20 \; \$1-set.iot.min
-20 \; \$1-set.iot.max 500 \; \$1-set.grainDur.min 5 \; \$1-set.grainDur.max
-100 \; \$1-set.env.min 1 \; \$1-set.env.max 99 \; \$1-set.amp.min 60
-\; \$1-set.amp.max 100 \; \$1-set.pitch.min -12 \; \$1-set.pitch.max
-12;
-#X connect 0 0 3 0;
-#X connect 1 0 2 0;
+#X obj -8 -568 r~ \$0-input;
+#X obj 9 -545 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 5300 1;
+#X obj 7 -482 *~;
+#N canvas 370 22 212 457 load 0;
+#X obj -73 -901 loadbang;
+#X msg -73 -533 \; pd dsp 1;
+#X obj -73 -925 inlet;
+#X msg -73 -857 bang \; pd dsp 0 \; \$1-pre.load bang;
+#X obj -73 -879 \$0;
+#X obj -73 -558 del 500;
+#X obj -73 -808 del 1000;
+#X obj -64 -785 \$0;
+#X msg -64 -764 \; \$1-apply bang \; \$1-load.voices 0 \; \$1-load.delread.m
+1000 \; \$1-load.iot.m 100 \; \$1-load.grainDur.m 90 \; \$1-load.env.m
+10 \; \$1-load.amp.m 90 \; \$1-load.pitch.m 0 \; \$1-load.delread.d
+30 \; \$1-load.iot.d 100 \; \$1-load.grainDur.d 0 \; \$1-load.env.d
+5 \; \$1-load.amp.d 100 \; \$1-load.pitch.d 1;
+#X connect 0 0 4 0;
 #X connect 2 0 0 0;
-#X restore -58 3 pd defaults;
-#X floatatom 96 76 10 0 0 0 - #0-set.iot.min #0-init.iot.min;
-#X floatatom 96 96 10 0 0 0 - #0-set.iot.max #0-init.iot.max;
-#X text -73 76 min. inter-onset time (ms):;
-#X text -73 96 max. inter-onset time (ms):;
-#X floatatom 96 116 10 0 0 0 - #0-set.env.min #0-init.env.min;
-#X floatatom 96 136 10 0 0 0 - #0-set.env.max #0-init.env.max;
-#X text -49 116 min. envelope (attack):;
-#X text -43 136 max. envelope (decay):;
-#X restore 35 -587 pd settings;
-#N canvas 502 54 450 300 notes 0;
-#X text 8 44 - PAN follows a triangular random distribution.;
-#X text 8 74 - Values ouside the valid ranges are ignored \, and the
-last accepted value is repeated instead.;
-#X text 8 4 - Triangular random distribution with an exponential factor
-for most parameters.;
-#X text 8 114 - Deviations from the mean are expressed in percentage
-or the total range.;
-#X restore 109 -587 pd notes;
-#X obj 40 -952 cnv 15 80 320 empty empty MEAN 28 315 1 10 -66577 -191407
-0;
-#X obj 47 -821 nbx 5 20 5 100 0 0 \$0-grainDur.m \$0-load.grainDur.m
-duration 0 -14 1 14 -1 -262144 -262144 90 256;
-#X obj 47 -871 nbx 5 20 20 500 0 0 \$0-iot.m \$0-load.iot.m iot 0 -14
-1 14 -1 -262144 -262144 100 256;
-#X obj 47 -922 nbx 5 20 0 10000 0 0 \$0-delread.m \$0-load.delread.m
-delread 0 -14 1 14 -1 -262144 -262144 100 256;
-#X obj 47 -671 nbx 5 20 -12 12 0 0 \$0-pitch.m \$0-load.pitch.m pitch
-0 -14 1 14 -1 -262144 -262144 0 256;
-#X obj 47 -771 nbx 5 20 1 99 0 0 \$0-env.m \$0-load.env.m envelope
-0 -14 1 14 -1 -262144 -262144 10 256;
-#X obj 47 -721 nbx 5 20 60 100 0 0 \$0-amp.m \$0-load.amp.m dynamics
-0 -14 1 14 -1 -262144 -262144 90 256;
-#X obj -13 -922 nbx 2 20 0 20 0 0 \$0-voices \$0-load.voices grains
-0 -14 1 14 -33289 -262144 -262144 0 256;
-#X obj 124 -952 cnv 15 56 320 empty empty DEVIATION 2 315 1 10 -99865
--33289 0;
-#X obj 129 -821 nbx 3 20 0 100 0 0 \$0-grainDur.d \$0-load.grainDur.d
-empty 52 8 1 14 -1 -262144 -262144 0 256;
-#X obj 128 -871 nbx 3 20 0 100 0 0 \$0-iot.d \$0-load.iot.d empty 52
-8 1 14 -1 -262144 -262144 100 256;
-#X obj 130 -922 nbx 3 20 0 100 0 0 \$0-delread.d \$0-load.delread.d
-empty 62 8 1 14 -1 -262144 -1 0 256;
-#X obj 128 -671 nbx 3 20 0 100 0 0 \$0-pitch.d \$0-load.pitch.d empty
-52 8 1 14 -1 -262144 -1 1 256;
-#X obj 128 -721 nbx 3 20 0 100 0 0 \$0-amp.d \$0-load.amp.d empty 52
-8 1 14 -1 -262144 -262144 100 256;
-#X obj 128 -771 nbx 3 20 0 100 0 0 \$0-env.d \$0-load.env.d empty 52
-8 1 14 -1 -262144 -1 5 256;
-#X connect 2 0 1 0;
+#X connect 3 0 6 0;
+#X connect 4 0 3 0;
+#X connect 5 0 1 0;
+#X connect 6 0 5 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X restore 181 -895 pd load;
+#X text -70 -926 INPUT;
+#X text -70 -686 OUTPUT;
+#X obj 181 -917 inlet;
+#X text -70 -676 ====================================;
+#X text -70 -916 ====================================;
+#X connect 1 0 0 0;
+#X connect 3 0 5 0;
+#X connect 4 0 5 1;
+#X connect 6 0 4 0;
+#X connect 7 0 3 0;
+#X connect 12 0 14 0;
+#X connect 13 0 12 0;
+#X connect 14 0 23 0;
+#X connect 15 0 16 0;
+#X connect 16 0 23 1;
+#X connect 17 0 16 1;
+#X connect 18 0 17 0;
+#X connect 19 0 5 1;
+#X connect 19 0 5 0;
+#X connect 20 0 28 1;
+#X connect 20 0 28 0;
+#X connect 21 0 20 0;
+#X connect 22 0 14 0;
+#X connect 23 0 8 0;
+#X connect 24 0 18 0;
+#X connect 26 0 19 0;
+#X connect 27 0 21 0;
+#X connect 28 0 19 1;
+#X connect 32 0 29 0;
+#X restore -14 -625 pd patch;
+#X connect 1 0 19 0;
