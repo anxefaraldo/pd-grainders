@@ -1,0 +1,164 @@
+#N canvas 1007 288 263 362 10;
+#X obj 0 -28 cnv 15 260 360 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 13 67 nbx 5 15 0 127 0 0 freq.max auto.freq.max max. 0 -8 0
+12 -262144 -1 -1 123 256;
+#X obj 13 101 nbx 5 15 1 127 0 0 freq.min auto.freq.min min. 0 -8 0
+12 -262144 -1 -1 121 256;
+#X obj 13 151 nbx 5 15 5 1000 1 0 iot.max auto.iot.max max. 0 -8 0
+12 -262144 -1 -1 951 256;
+#X obj 13 184 nbx 5 15 5 1000 1 0 iot.min auto.iot.min min. 0 -8 0
+12 -262144 -1 -1 36 256;
+#X text 11 37 FREQUENCY;
+#X text 11 123 IOT;
+#X obj 93 151 nbx 5 15 1 100 0 0 dur.max auto.dur.max max. 0 -8 0 12
+-262144 -1 -1 4 256;
+#X obj 93 184 nbx 5 15 1 100 0 0 dur.min auto.dur.min min. 0 -8 0 12
+-262144 -1 -1 1 256;
+#X text 92 123 DURATION;
+#X obj 173 151 nbx 5 15 2 98 0 0 env.max auto.env.max max. 0 -8 0 12
+-262144 -1 -1 5 256;
+#X obj 173 184 nbx 5 15 2 98 0 0 env.min auto.env.min min. 0 -8 0 12
+-262144 -1 -1 2 256;
+#X text 172 123 ENVELOPE;
+#X obj 13 234 nbx 5 15 40 100 0 0 dyn.max auto.dyn.max max. 0 -8 0
+12 -262144 -1 -1 98 256;
+#X obj 13 267 nbx 5 15 40 100 0 0 dyn.min auto.dyn.min min. 0 -8 0
+12 -262144 -1 -1 41 256;
+#X text 12 206 DYNAMICS;
+#X obj 179 231 tgl 50 0 interruptor auto.interruptor on/off 5 -7 0
+12 -258113 -1 -1 0 1;
+#X obj 16 -3 hsl 225 15 0 100 0 0 master.vol empty MasterVol -2 -10
+0 12 -262144 -1 -1 17700 1;
+#X obj 93 67 nbx 5 15 1 100 0 0 voices auto.voices voices 0 -8 0 12
+-262144 -1 -1 1 256;
+#N canvas 244 22 424 323 system 0;
+#X obj -16 222 dac~;
+#X obj -22 23 catch~ grain_L;
+#X obj 9 65 catch~ grain_R;
+#X obj 17 109 r master.vol;
+#X obj 17 172 line~;
+#X msg 17 150 \$1 10;
+#X obj 9 195 *~;
+#X obj -22 195 *~;
+#X obj 17 129 dbtorms;
+#X obj 266 80 until;
+#X obj 254 9 sel 0;
+#X obj 266 101 f 1;
+#X obj 319 100 + 1;
+#X obj 272 209 pack;
+#X obj 266 161 t f f;
+#X msg 319 154 1;
+#X obj 281 31 t b f;
+#X obj 293 184 <=;
+#X obj 254 -13 r voices;
+#X obj 272 233 s voice.int;
+#X msg 266 57 100;
+#X obj 319 132 sel 100;
+#X floatatom -23 -18 5 0 0 0 - - -;
+#X text 17 -18 change number of max grains;
+#X obj -16 44 s~ granulator.rec.l;
+#X obj 16 87 s~ granulator.rec.r;
+#N canvas 677 174 265 512 randomize 0;
+#X obj 24 79 random 100000;
+#X obj 24 101 + 1000;
+#X obj 87 14 loadbang;
+#X obj 114 79 random 100000;
+#X obj 114 101 + 1000;
+#X obj 69 148 minmax;
+#X obj 69 126 pack 0 0;
+#X obj 87 55 t b b;
+#X obj 94 35 r randomize;
+#X obj 124 203 s auto.freq.max;
+#X obj 124 233 mod 1000;
+#X obj 24 233 mod 1000;
+#X obj 24 183 mod 127;
+#X obj 124 183 mod 127;
+#X obj 124 253 s auto.iot.max;
+#X obj 24 203 s auto.freq.min;
+#X obj 24 253 s auto.iot.min;
+#X obj 24 283 mod 100;
+#X obj 124 283 mod 100;
+#X obj 124 333 mod 100;
+#X obj 24 303 s auto.dur.min;
+#X obj 124 303 s auto.dur.max;
+#X obj 124 353 s auto.env.max;
+#X obj 24 353 s auto.env.min;
+#X obj 24 333 mod 100;
+#X obj 24 405 + 40;
+#X obj 124 405 + 40;
+#X obj 24 383 mod 60;
+#X obj 124 383 mod 60;
+#X obj 24 453 mod 100;
+#X obj 24 473 s auto.voices;
+#X obj 24 426 s auto.dyn.min;
+#X obj 124 426 s auto.dyn.max;
+#X connect 0 0 1 0;
+#X connect 1 0 6 0;
+#X connect 2 0 7 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 1;
+#X connect 5 0 12 0;
+#X connect 5 0 11 0;
+#X connect 5 0 17 0;
+#X connect 5 0 24 0;
+#X connect 5 0 27 0;
+#X connect 5 0 29 0;
+#X connect 5 1 13 0;
+#X connect 5 1 10 0;
+#X connect 5 1 18 0;
+#X connect 5 1 19 0;
+#X connect 5 1 28 0;
+#X connect 6 0 5 0;
+#X connect 7 0 0 0;
+#X connect 7 1 3 0;
+#X connect 8 0 7 0;
+#X connect 10 0 14 0;
+#X connect 11 0 16 0;
+#X connect 12 0 15 0;
+#X connect 13 0 9 0;
+#X connect 17 0 20 0;
+#X connect 18 0 21 0;
+#X connect 19 0 22 0;
+#X connect 24 0 23 0;
+#X connect 25 0 31 0;
+#X connect 26 0 32 0;
+#X connect 27 0 25 0;
+#X connect 28 0 26 0;
+#X connect 29 0 30 0;
+#X restore 17 222 pd randomize;
+#X obj -23 2 a.multiplinstancer a.grain 100;
+#X connect 1 0 7 0;
+#X connect 1 0 24 0;
+#X connect 2 0 6 0;
+#X connect 2 0 25 0;
+#X connect 3 0 8 0;
+#X connect 4 0 6 1;
+#X connect 4 0 7 1;
+#X connect 5 0 4 0;
+#X connect 6 0 0 1;
+#X connect 7 0 0 0;
+#X connect 8 0 5 0;
+#X connect 9 0 11 0;
+#X connect 10 1 16 0;
+#X connect 11 0 12 0;
+#X connect 11 0 14 0;
+#X connect 11 0 21 0;
+#X connect 12 0 11 1;
+#X connect 13 0 19 0;
+#X connect 14 0 13 0;
+#X connect 14 1 17 0;
+#X connect 15 0 11 1;
+#X connect 16 0 20 0;
+#X connect 16 1 17 1;
+#X connect 17 0 13 1;
+#X connect 18 0 10 0;
+#X connect 20 0 9 0;
+#X connect 21 0 15 0;
+#X connect 22 0 27 0;
+#X restore 13 295 pd system;
+#X obj 98 232 bng 50 250 50 0 randomize empty randomize -6 -8 0 12
+-4160 -1 -1;
+#X obj 13 17 nbx 5 15 1 100 0 0 empty empty dB 66 8 0 12 -262144 -1
+-1 79.0179 256;
+#X connect 17 0 21 0;
