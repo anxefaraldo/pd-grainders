@@ -147,8 +147,8 @@
 #X obj -174 -37 r \$0-pre_maxGrains;
 #X obj -184 -14 pack 0 \$0;
 #N canvas 0 22 191 367 \$0-grains 0;
-#X obj 25 50 a.fileGrain 1 1724;
-#X obj 25 75 a.fileGrain 2 1724;
+#X obj 25 50 a.fileGrain 1 1566;
+#X obj 25 75 a.fileGrain 2 1566;
 #X restore -183 196 pd \$0-grains;
 #N canvas 57 98 1234 479 mapping 0;
 #X obj 75 218 line 0 1;
@@ -904,4 +904,4 @@
 10 -228856 -1 -1;
 #X text 105 -59 change rate (Hz);
 #X text -344 -197 maximum number of grains;
-#X text -343 -177 (ms.) speed limit for some calculations;
+#X text -343 -177 (ms.) speed limit for critical calculations;
