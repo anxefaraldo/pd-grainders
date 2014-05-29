@@ -1,4 +1,4 @@
-gs (granular gynthesis in Pd)
+gs (granular synthesis in Pd)
 =============================
 
 This repository contains a few patches to perform granular synthesis. From sample-based granulation to live-input to synthesised sound. Constantly growing and changing.
