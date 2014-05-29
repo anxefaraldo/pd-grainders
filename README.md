@@ -1,13 +1,15 @@
-emt
-===
+gs (granular gynthesis in Pd)
+=============================
 
-Electronic Music Tools in Pure Data
+This repository contains a few patches to perform granular synthesis. From sample-based granulation to live-input to synthesised sound. Constantly growing and changing.
 
-ig - Input Granulator. Stores incoming audio into a delay line and performs basic granular synthesis operations.
+List of tools:
 
-fg - File Granulator. Takes a mono soundfile and performs granular synthesis techniques.
+ig - input granulator. Stores incoming audio to a delay line and performs basic granular synthesis operations.
 
-pg - Pulse Granulator. Granular synthesis tool with unit-pulses and karplus-strong resonances.
+fg - file granulator. Takes a mono soundfile (.wav) and performs granular synthesis on it.
 
-sg - Sine Granulator. Granular synthesis tool with sine waves.
+pg - pulse granulator. Granular synthesis with unit-pulses and karplus-strong resonances.
+
+sg - sine granulator. Granular synthesis with sine waves.
 
