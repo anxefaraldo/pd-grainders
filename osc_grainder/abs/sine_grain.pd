@@ -2,7 +2,7 @@
 #X obj 107 -25 r interruptor;
 #X obj 107 -4 sel 0 1;
 #X msg 34 136 stop;
-#X obj 190 16 a.rango iot;
+#X obj 190 16 rango iot;
 #X obj 157 58 random;
 #X obj 157 106 +;
 #X obj 190 37 / 5;
@@ -72,10 +72,10 @@
 #X obj 270 576 sel 1;
 #X msg 260 601 1;
 #X obj 275 628 pipe 100;
-#X obj 213 174 a.rango dur;
-#X obj 68 381 a.rango freq;
-#X obj 258 244 a.rango env;
-#X obj 243 498 a.rango dyn;
+#X obj 213 174 rango dur;
+#X obj 68 381 rango freq;
+#X obj 258 244 rango env;
+#X obj 243 498 rango dyn;
 #X obj 35 533 osc~;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;

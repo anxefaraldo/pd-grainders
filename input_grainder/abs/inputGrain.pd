@@ -34,7 +34,7 @@
 #X obj -1072 396 sig~;
 #X obj -1072 374 * 0.01;
 #X obj -929 528 *~;
-#X obj -713 353 a.scaler \$1 delread;
+#X obj -713 353 scaler \$1 delread;
 #X obj -888 47 change;
 #X obj -899 552 +~ 0;
 #X obj -882 112 pipe 1000;
@@ -49,11 +49,11 @@
 #X obj -828 331 crandtex 2 0.01;
 #X obj -713 331 crandtex 2 0.01;
 #X obj -588 330 crandtex 2 0.01;
-#X obj -828 353 a.scaler \$1 pitch;
-#X obj -588 352 a.scaler \$1 amp;
-#X obj -922 204 a.scaler \$1 iot;
-#X obj -959 353 a.scaler \$1 grainDur;
-#X obj -1072 352 a.scaler \$1 env;
+#X obj -828 353 scaler \$1 pitch;
+#X obj -588 352 scaler \$1 amp;
+#X obj -922 204 scaler \$1 iot;
+#X obj -959 353 scaler \$1 grainDur;
+#X obj -1072 352 scaler \$1 env;
 #X connect 0 0 1 0;
 #X connect 1 0 16 0;
 #X connect 1 0 34 0;

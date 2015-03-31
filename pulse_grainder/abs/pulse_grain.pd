@@ -38,7 +38,7 @@
 #X obj 127 614 throw~ \$2-L;
 #X obj 162 594 throw~ \$2-R;
 #X obj 481 321 r \$2-start;
-#X obj 432 9 a.rand \$2 Pan;
+#X obj 432 9 rand \$2 Pan;
 #X obj 473 78 r \$2-voices;
 #X obj 151 40 / 100;
 #X obj 151 66 clip 0.001 0.999;
@@ -46,11 +46,11 @@
 #X obj 461 607 f;
 #X obj 473 120 change;
 #X obj 307 135 / 100;
-#X obj 151 19 a.rmm \$2 Fdb;
-#X obj 344 17 a.rmm \$2 Q;
-#X obj 55 19 a.rmm \$2 Freq;
-#X obj 254 18 a.rmm \$2 Harm;
-#X obj 289 562 a.rmm \$2 Rest;
+#X obj 151 19 rmm \$2 Fdb;
+#X obj 344 17 rmm \$2 Q;
+#X obj 55 19 rmm \$2 Freq;
+#X obj 254 18 rmm \$2 Harm;
+#X obj 289 562 rmm \$2 Rest;
 #X obj 527 294 switch~ 0;
 #X obj 473 141 t f f;
 #X obj 500 165 sel 0;
@@ -66,7 +66,7 @@
 #X obj 148 358 * 10;
 #X obj 211 303 log;
 #X obj 148 336 / 2.30259;
-#X obj -23 87 a.unitpulse \$2;
+#X obj -23 87 unitpulse \$2;
 #X connect 0 0 58 0;
 #X connect 1 0 0 1;
 #X connect 1 0 62 0;
