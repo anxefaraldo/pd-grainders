@@ -1,6 +1,6 @@
 #N struct timeline float x float y;
 #N struct error float x float y float width;
-#N canvas 594 22 608 548 10;
+#N canvas 9 453 608 548 10;
 #X declare -path ./abs;
 #X obj 168 288 nbx 5 14 -1e+37 1e+37 0 0 NOSY \$0-sizeSecs DURATION:
 -60 8 0 10 -262144 -258113 -258113 0 256;
