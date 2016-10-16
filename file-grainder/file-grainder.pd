@@ -1,117 +1,123 @@
 #N struct timeline float x float y;
 #N struct error float x float y float width;
-#N canvas 9 453 608 548 10;
-#X declare -path ./abs;
-#X obj 168 288 nbx 5 14 -1e+37 1e+37 0 0 NOSY \$0-sizeSecs DURATION:
--60 8 0 10 -262144 -258113 -258113 0 256;
+#N canvas 10 23 609 551 10;
+#X declare -path abs -stdpath maxlib -stdpath hcs -stdpath iemlib -stdpath
+mapping -stdpath zexy -stdpath ggee -stdpath purepd -stdpath motex
+-stdpath cyclone;
+#X obj 545 508 nbx 5 14 -1e+37 1e+37 0 0 NOSY \$0-sizeSecs DURATION:
+-60 8 0 10 -262144 -258113 -258113 12.0628 256;
 #N canvas 39 1058 822 523 wave 0;
-#X scalar timeline 0.25 -1 \;;
-#X scalar error 0.45 -1 0.1 \;;
+#X scalar timeline 0.5 -1 \;;
+#X scalar error 0.95 -1 0.05 \;;
 #N canvas 0 22 450 278 (subpatch) 0;
-#X array \$0-soundfile 492032 float 0;
-#X coords 0 1 492031 -1 600 150 2 0 0;
+#X array \$0-soundfile 531968 float 0;
+#X coords 0 1 531967 -1 600 150 2 0 0;
 #X restore 100 200 graph;
 #X coords 0 -1 1 1 600 150 2 100 200;
-#X restore -374 155 pd wave;
-#X obj -374 -218 cnv 15 600 80 empty empty empty 20 12 0 14 -233017
--66577 0;
-#X floatatom -370 -197 3 0 500 0 - #0-pre_maxGrains_p #0-pre_maxGrains
-;
-#X floatatom -370 -177 3 0 0 0 - #0-speedLimit_p #0-speedLimit;
-#X obj -374 1 cnv 15 600 135 empty empty empty 20 12 0 14 -233017 -66577
+#X restore 3 375 pd wave;
+#X obj 3 2 cnv 15 600 80 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#X floatatom -353 101 5 1 1000 0 - #0-grainSizeMean_p #0-grainSizeMean
+#X floatatom 7 23 3 0 500 0 - #0-pre_maxGrains_p #0-pre_maxGrains,
+f 3;
+#X floatatom 7 43 3 0 0 0 - #0-speedLimit_p #0-speedLimit, f 3;
+#X obj 3 221 cnv 15 600 135 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X floatatom 24 321 5 1 1000 0 - #0-grainSizeMean_p #0-grainSizeMean
+, f 5;
+#X floatatom 75 321 0 0 500 0 - #0-grainSizeDev_p #0-grainSizeDev;
+#X text 24 335 mean;
+#X text 74 336 dev;
+#X floatatom 304 321 5 0 1000 0 - #0-silenceMean_p #0-silenceMean,
+f 5;
+#X floatatom 354 321 5 0 500 0 - #0-silenceDev_p #0-silenceDev, f
+5;
+#X text 304 335 mean;
+#X text 344 336 dev;
+#X floatatom 504 321 4 0 1200 0 - #0-detune_p #0-detune, f 4;
+#X floatatom 24 261 5 0 112 0 - #0-volumeMean_p #0-volumeMean, f 5
 ;
-#X floatatom -302 101 0 0 500 0 - #0-grainSizeDev_p #0-grainSizeDev
-;
-#X text -353 115 mean;
-#X text -303 116 dev;
-#X floatatom -73 101 5 0 1000 0 - #0-silenceMean_p #0-silenceMean;
-#X floatatom -23 101 5 0 500 0 - #0-silenceDev_p #0-silenceDev;
-#X text -73 115 mean;
-#X text -33 116 dev;
-#X floatatom 127 101 4 0 1200 0 - #0-detune_p #0-detune;
-#X floatatom -353 41 5 0 112 0 - #0-volumeMean_p #0-volumeMean;
-#X floatatom -303 41 5 0 56 0 - #0-volumeDev_p #0-volumeDev;
-#X text -353 55 mean;
-#X text -303 56 dev;
-#X floatatom -213 41 5 -45 45 0 - #0-panMean_p #0-panMean;
-#X floatatom -163 41 5 0 45 0 - #0-panDev_p #0-panDev;
-#X text -213 55 mean;
-#X text -163 56 dev;
-#X floatatom -213 100 5 0 100 0 - #0-readOffsetMean_p #0-readOffsetMean
-;
-#X floatatom -162 101 5 0 50 0 - #0-readOffsetDev_p #0-readOffsetDev
-;
-#X text -213 115 mean;
-#X text -163 115 dev;
-#X text -355 80 grain size (ms);
-#X text -215 80 reading point (%);
-#X text -75 80 silence (ms);
-#X text -355 20 volume (dB);
-#X text -215 20 pan (-45/45);
-#X obj -364 101 bng 8 250 50 0 \$0-grainSizeMean_l nothing empty 17
-7 0 10 -228856 -1 -1;
-#X obj -314 101 bng 8 250 50 0 \$0-grainSizeDev_l nothing empty 17
-7 0 10 -228856 -1 -1;
-#X obj -224 101 bng 8 250 50 0 \$0-readOffsetMean_l nothing empty 17
-7 0 10 -228856 -1 -1;
-#X obj -174 101 bng 8 250 50 0 \$0-readOffsetDev_l nothing empty 17
-7 0 10 -228856 -1 -1;
-#X obj -84 101 bng 8 250 50 0 \$0-silenceMean_l nothing empty 17 7
+#X floatatom 74 261 5 0 56 0 - #0-volumeDev_p #0-volumeDev, f 5;
+#X text 24 275 mean;
+#X text 74 276 dev;
+#X floatatom 164 261 5 -45 45 0 - #0-panMean_p #0-panMean, f 5;
+#X floatatom 214 261 5 0 45 0 - #0-panDev_p #0-panDev, f 5;
+#X text 164 275 mean;
+#X text 214 276 dev;
+#X floatatom 164 320 5 0 100 0 - #0-readOffsetMean_p #0-readOffsetMean
+, f 5;
+#X floatatom 215 321 5 0 50 0 - #0-readOffsetDev_p #0-readOffsetDev
+, f 5;
+#X text 164 335 mean;
+#X text 214 335 dev;
+#X text 22 300 grain size (ms);
+#X text 162 300 reading point (%);
+#X text 302 300 silence (ms);
+#X text 22 240 volume (dB);
+#X text 162 240 pan (-45/45);
+#X obj 13 321 bng 8 250 50 0 \$0-grainSizeMean_l nothing empty 17 7
 0 10 -228856 -1 -1;
-#X obj -34 101 bng 8 250 50 0 \$0-silenceDev_l ccccccccc empty 17 7
+#X obj 63 321 bng 8 250 50 0 \$0-grainSizeDev_l nothing empty 17 7
 0 10 -228856 -1 -1;
-#X obj 46 101 bng 8 250 50 0 \$0-octave_l asdfd empty 17 7 0 10 -228856
--1 -1;
-#X obj 116 101 bng 8 250 50 0 \$0-detune_l asdfdfdf empty 17 7 0 10
--228856 -1 -1;
-#X obj -364 41 bng 8 250 50 0 \$0-volumeMean_l empty empty 17 7 0 10
--228856 -1 -1;
-#X obj -314 41 bng 8 250 50 0 \$0-volumeDev_l nothing empty 17 7 0
-10 -228856 -1 -1;
-#X obj -224 41 bng 8 250 50 0 \$0-panMean_l nothing empty 17 7 0 10
--228856 -1 -1;
-#X obj -174 41 bng 8 250 50 0 \$0-panDev_l nothing empty 17 7 0 10
--228856 -1 -1;
-#X obj 166 42 bng 8 250 50 0 \$0-active_l frfrfrf empty 17 7 0 10 -228856
--1 -1;
-#X text -357 2 GRAINDER;
-#X obj -374 -131 cnv 15 215 125 empty empty empty 20 12 0 14 -233017
--66577 0;
-#X obj -367 -91 tgl 15 0 \$0-start \$0-initStart empty 17 7 0 10 -228856
--1 -1 0 1;
-#X obj -367 -50 bng 15 250 50 0 \$0-playFile asdfasd empty 17 7 0 10
--228856 -1 -1;
-#X floatatom -367 -71 0 0.1 10 0 - #0-speedRatio_p #0-speedRatio;
-#X obj -367 -30 tgl 15 0 \$0-stopEnd nothing empty 17 7 0 10 -228856
--1 -1 0 1;
-#X text -349 -32 stop at the end of the file?;
-#X obj -367 -111 bng 15 250 50 0 \$0-loadFile \$0-loadFile_p empty
-17 7 0 10 -228856 -1 -1;
-#X text -348 -112 load file (wav or aiff);
-#X text -348 -93 start processing the soundfile;
-#X text -340 -70 speed ratio;
-#X text -348 -51 play;
-#X text -371 -129 PLAYBACK;
-#X obj -151 -131 cnv 15 377 125 empty empty empty 20 12 0 14 -233017
--66577 0;
-#X floatatom -133 -38 5 30 10000 0 - #0-filterFreqMean_p #0-filterFreqMean
-;
-#X floatatom -83 -38 5 0 1000 0 - #0-filterFreqDev_p #0-filterFreqDev
-;
-#X text -133 -24 mean;
-#X text -83 -23 dev;
-#X obj -144 -38 bng 8 250 50 0 \$0-filterFreqMean_l nothing empty 17
+#X obj 153 321 bng 8 250 50 0 \$0-readOffsetMean_l nothing empty 17
 7 0 10 -228856 -1 -1;
-#X obj -94 -38 bng 8 250 50 0 \$0-filterFreqDev_l cccccccccccc empty
+#X obj 203 321 bng 8 250 50 0 \$0-readOffsetDev_l nothing empty 17
+7 0 10 -228856 -1 -1;
+#X obj 293 321 bng 8 250 50 0 \$0-silenceMean_l nothing empty 17 7
+0 10 -228856 -1 -1;
+#X obj 343 321 bng 8 250 50 0 \$0-silenceDev_l ccccccccc empty 17 7
+0 10 -228856 -1 -1;
+#X obj 423 321 bng 8 250 50 0 \$0-octave_l asdfd empty 17 7 0 10 -228856
+-1 -1;
+#X obj 493 321 bng 8 250 50 0 \$0-detune_l asdfdfdf empty 17 7 0 10
+-228856 -1 -1;
+#X obj 13 261 bng 8 250 50 0 \$0-volumeMean_l empty empty 17 7 0 10
+-228856 -1 -1;
+#X obj 63 261 bng 8 250 50 0 \$0-volumeDev_l nothing empty 17 7 0 10
+-228856 -1 -1;
+#X obj 153 261 bng 8 250 50 0 \$0-panMean_l nothing empty 17 7 0 10
+-228856 -1 -1;
+#X obj 203 261 bng 8 250 50 0 \$0-panDev_l nothing empty 17 7 0 10
+-228856 -1 -1;
+#X obj 543 262 bng 8 250 50 0 \$0-active_l frfrfrf empty 17 7 0 10
+-228856 -1 -1;
+#X text 20 222 GRAINDER;
+#X obj 3 89 cnv 15 215 125 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 10 129 tgl 15 0 \$0-start \$0-initStart empty 17 7 0 10 -228856
+-1 -1 1 1;
+#X obj 10 170 bng 15 250 50 0 \$0-playFile asdfasd empty 17 7 0 10
+-228856 -1 -1;
+#X floatatom 10 149 0 0.1 10 0 - #0-speedRatio_p #0-speedRatio;
+#X obj 10 190 tgl 15 0 \$0-stopEnd nothing empty 17 7 0 10 -228856
+-1 -1 1 1;
+#X text 28 188 stop at the end of the file?;
+#X obj 10 109 bng 15 250 50 0 \$0-loadFile \$0-loadFile_p empty 17
+7 0 10 -228856 -1 -1;
+#X text 29 108 load file (wav or aiff);
+#X text 29 127 start processing the soundfile;
+#X text 37 150 speed ratio;
+#X text 29 169 play;
+#X text 6 91 PLAYBACK;
+#X obj 226 89 cnv 15 377 125 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X floatatom 244 182 5 30 10000 0 - #0-filterFreqMean_p #0-filterFreqMean
+, f 5;
+#X floatatom 294 182 5 0 1000 0 - #0-filterFreqDev_p #0-filterFreqDev
+, f 5;
+#X text 244 196 mean;
+#X text 294 197 dev;
+#X obj 233 182 bng 8 250 50 0 \$0-filterFreqMean_l nothing empty 17
+7 0 10 -228856 -1 -1;
+#X obj 283 182 bng 8 250 50 0 \$0-filterFreqDev_l cccccccccccc empty
 17 7 0 10 -228856 -1 -1;
-#X floatatom -3 -39 5 0 100 0 - #0-filterQMean_p #0-filterQMean;
-#X floatatom 48 -38 5 0 50 0 - #0-filterQDev_p #0-filterQDev;
-#X text -3 -24 mean;
-#X text 48 -24 dev;
-#N canvas 556 373 426 516 patch 0;
-#X obj -184 -104 loadbang;
+#X floatatom 374 181 5 0 100 0 - #0-filterQMean_p #0-filterQMean,
+f 5;
+#X floatatom 425 182 5 0 50 0 - #0-filterQDev_p #0-filterQDev, f 5
+;
+#X text 374 196 mean;
+#X text 425 196 dev;
+#N canvas 402 103 531 521 patch 0;
+#X obj 16 26 loadbang;
 #N canvas 0 22 229 292 makeGrains 0;
 #X obj 42 84 until;
 #X obj 68 112 + 1;
@@ -144,109 +150,109 @@
 #X connect 10 0 13 0;
 #X connect 11 0 9 0;
 #X connect 13 0 12 0;
-#X restore -183 174 pd makeGrains;
-#X obj -174 -37 r \$0-pre_maxGrains;
-#X obj -184 -14 pack 0 \$0;
+#X restore 17 304 pd makeGrains;
+#X obj 26 93 r \$0-pre_maxGrains;
+#X obj 16 116 pack 0 \$0;
 #N canvas 0 22 191 367 \$0-grains 0;
-#X obj 25 50 fileGrain 1 1002;
-#X obj 25 75 fileGrain 2 1002;
-#X restore -183 196 pd \$0-grains;
-#N canvas 57 98 1234 479 mapping 0;
-#X obj 75 218 line 0 1;
-#X obj -49 349 pack 0 0;
-#X obj -39 327 t b f;
-#X obj -49 372 s \$0-grainSize;
-#X obj -49 286 r \$0-grainSizeMean;
-#X obj -39 306 r \$0-grainSizeDev;
-#X obj 222 353 pack 0 0;
-#X obj 232 331 t b f;
-#X obj 222 376 s \$0-silence;
-#X obj 232 310 r \$0-silenceDev;
-#X obj 222 290 r \$0-silenceMean;
-#X obj 342 331 t b f;
-#X obj 432 353 pack 0 0;
-#X obj 442 331 t b f;
-#X obj 432 290 r \$0-volumeMean;
-#X obj 442 310 r \$0-volumeDev;
-#X obj 432 376 s \$0-volume;
-#X obj 532 353 pack 0 0;
-#X obj 542 331 t b f;
-#X obj 532 290 r \$0-panMean;
-#X obj 542 310 r \$0-panDev;
-#X obj 532 376 s \$0-pan;
-#X obj 75 350 pack 0 0;
-#X obj 93 328 t b f;
-#X obj 84 285 r \$0-readOffsetMean;
-#X obj 93 307 r \$0-readOffsetDev;
-#X obj 75 372 s \$0-readOffset;
-#X obj 75 -69 r \$0-playFile;
-#X obj 233 14 r \$0-stopEnd;
-#X obj 188 170 delay;
-#X obj 188 217 s \$0-initStart;
-#X msg 188 190 0;
-#X obj 94 -8 s \$0-initStart;
-#X msg 94 -29 1;
-#X msg 82 241 set \$1;
-#X obj 82 262 s \$0-readOffsetMean_p;
-#X obj 227 153 r \$0-grainSizeMean;
-#X obj 227 173 * 0.5;
-#X obj 227 194 max 1;
-#X obj 98 14 r \$0-sizeMs;
-#X obj 90 120 * 1;
-#X obj 75 144 f;
-#X obj 75 -49 t b b b;
-#X msg 75 165 0 \, 100 \$1;
-#X obj 188 35 spigot 0;
-#X obj 90 34 r \$0-speedRatio;
-#X obj 90 77 /;
-#X msg 90 55 1 \$1;
-#X obj 98 98 t b f;
-#X obj 200 89 r \$0-readOffsetMean;
-#X msg 200 110 stop;
-#X obj 622 353 pack 0 0;
-#X obj 632 331 t b f;
-#X obj 632 310 r \$0-filterFreqDev;
-#X obj 622 376 s \$0-filterFreq;
-#X obj 752 353 pack 0 0;
-#X obj 762 331 t b f;
-#X obj 622 290 r \$0-filterFreqMean;
-#X obj 752 290 r \$0-filterQMean;
-#X obj 762 310 r \$0-filterQDev;
-#X obj 752 376 s \$0-filterQ;
-#X obj 862 353 pack 0 0;
-#X obj 872 331 t b f;
-#X obj 862 205 * 0.01;
-#X obj 872 309 * 0.01;
-#X obj 962 353 pack 0 0;
-#X obj 972 331 t b f;
-#X obj 962 185 r \$0-attackMean;
-#X obj 962 376 s \$0-attack;
-#X obj 962 206 * 0.01;
-#X obj 972 287 r \$0-attackDev;
-#X obj 972 309 * 0.01;
-#X obj 1062 353 pack 0 0;
-#X obj 1072 331 t b f;
-#X obj 1062 206 * 0.01;
-#X obj 1072 309 * 0.01;
-#X obj 862 184 r \$0-peakMean;
-#X obj 872 287 r \$0-peakDev;
-#X obj 862 376 s \$0-peak;
-#X obj 1062 376 s \$0-release;
-#X obj 1072 288 r \$0-releaseDev;
-#X obj 1062 185 r \$0-releaseMean;
-#X obj 962 247 -;
-#X obj 962 267 abs;
-#X msg 962 226 1 \$1;
-#X obj 1062 247 -;
-#X obj 1062 267 abs;
-#X msg 1062 226 1 \$1;
-#X obj 342 310 r \$0-detune;
-#X obj 332 376 s \$0-tuning;
-#X obj 332 266 - 1;
-#X obj 332 244 r \$0-octave;
-#X obj 332 353 pack 0 0;
-#X obj 332 287 * 1200;
-#X obj 200 131 uanz;
+#X obj 25 50 fileGrain 1 1004;
+#X obj 25 75 fileGrain 2 1004;
+#X restore 17 326 pd \$0-grains;
+#N canvas 4 23 1273 485 mapping 0;
+#X obj 128 281 line 0 1;
+#X obj 4 412 pack 0 0;
+#X obj 14 390 t b f;
+#X obj 4 435 s \$0-grainSize;
+#X obj 4 349 r \$0-grainSizeMean;
+#X obj 14 369 r \$0-grainSizeDev;
+#X obj 275 416 pack 0 0;
+#X obj 285 394 t b f;
+#X obj 275 439 s \$0-silence;
+#X obj 285 373 r \$0-silenceDev;
+#X obj 275 353 r \$0-silenceMean;
+#X obj 395 394 t b f;
+#X obj 485 416 pack 0 0;
+#X obj 495 394 t b f;
+#X obj 485 353 r \$0-volumeMean;
+#X obj 495 373 r \$0-volumeDev;
+#X obj 485 439 s \$0-volume;
+#X obj 585 416 pack 0 0;
+#X obj 595 394 t b f;
+#X obj 585 353 r \$0-panMean;
+#X obj 595 373 r \$0-panDev;
+#X obj 585 439 s \$0-pan;
+#X obj 128 413 pack 0 0;
+#X obj 146 391 t b f;
+#X obj 137 348 r \$0-readOffsetMean;
+#X obj 146 370 r \$0-readOffsetDev;
+#X obj 128 435 s \$0-readOffset;
+#X obj 128 -6 r \$0-playFile;
+#X obj 286 77 r \$0-stopEnd;
+#X obj 241 233 delay;
+#X obj 241 280 s \$0-initStart;
+#X msg 241 253 0;
+#X obj 147 55 s \$0-initStart;
+#X msg 147 34 1;
+#X msg 135 304 set \$1;
+#X obj 135 325 s \$0-readOffsetMean_p;
+#X obj 280 216 r \$0-grainSizeMean;
+#X obj 280 236 * 0.5;
+#X obj 280 257 max 1;
+#X obj 151 77 r \$0-sizeMs;
+#X obj 143 183 * 1;
+#X obj 128 207 f;
+#X obj 128 14 t b b b;
+#X msg 128 228 0 \, 100 \$1;
+#X obj 241 98 spigot 0;
+#X obj 143 97 r \$0-speedRatio;
+#X obj 143 140 /;
+#X msg 143 118 1 \$1;
+#X obj 151 161 t b f;
+#X obj 253 152 r \$0-readOffsetMean;
+#X msg 253 173 stop;
+#X obj 675 416 pack 0 0;
+#X obj 685 394 t b f;
+#X obj 685 373 r \$0-filterFreqDev;
+#X obj 675 439 s \$0-filterFreq;
+#X obj 805 416 pack 0 0;
+#X obj 815 394 t b f;
+#X obj 675 353 r \$0-filterFreqMean;
+#X obj 805 353 r \$0-filterQMean;
+#X obj 815 373 r \$0-filterQDev;
+#X obj 805 439 s \$0-filterQ;
+#X obj 915 416 pack 0 0;
+#X obj 925 394 t b f;
+#X obj 915 268 * 0.01;
+#X obj 925 372 * 0.01;
+#X obj 1015 416 pack 0 0;
+#X obj 1025 394 t b f;
+#X obj 1015 248 r \$0-attackMean;
+#X obj 1015 439 s \$0-attack;
+#X obj 1015 269 * 0.01;
+#X obj 1025 350 r \$0-attackDev;
+#X obj 1025 372 * 0.01;
+#X obj 1115 416 pack 0 0;
+#X obj 1125 394 t b f;
+#X obj 1115 269 * 0.01;
+#X obj 1125 372 * 0.01;
+#X obj 915 247 r \$0-peakMean;
+#X obj 925 350 r \$0-peakDev;
+#X obj 915 439 s \$0-peak;
+#X obj 1115 439 s \$0-release;
+#X obj 1125 351 r \$0-releaseDev;
+#X obj 1115 248 r \$0-releaseMean;
+#X obj 1015 310 -;
+#X obj 1015 330 abs;
+#X msg 1015 289 1 \$1;
+#X obj 1115 310 -;
+#X obj 1115 330 abs;
+#X msg 1115 289 1 \$1;
+#X obj 395 373 r \$0-detune;
+#X obj 385 439 s \$0-tuning;
+#X obj 385 329 - 1;
+#X obj 385 307 r \$0-octave;
+#X obj 385 416 pack 0 0;
+#X obj 385 350 * 1200;
+#X obj 253 194 uanz;
 #X connect 0 0 22 0;
 #X connect 0 0 34 0;
 #X connect 1 0 3 0;
@@ -346,34 +352,33 @@
 #X connect 93 0 92 0;
 #X connect 94 0 29 0;
 #X connect 94 0 0 0;
-#X restore -183 217 pd mapping;
-#X obj 54 -61 openpanel;
-#X obj 54 -39 symbol;
-#X obj 54 76 soundfiler;
-#X obj 54 142 /;
-#X obj 69 121 samplerate~;
-#X obj 54 184 * 1000;
-#X obj 54 -83 getdir;
-#X obj 54 -105 r \$0-loadFile;
-#X text -156 -83 <-- number of grains per default;
-#X obj 69 98 r \$0-loadbang1;
-#X obj -184 82 pipe 100;
-#X obj 81 229 s \$0-sizeMs;
-#X obj 54 207 t b f;
-#X obj 54 273 s \$0-soundfile;
-#X msg 54 251 normalize;
-#X obj 99 14 symbol \$0-soundfile;
-#X obj 54 -17 t s b;
-#X obj 54 35 pack s s;
-#X msg 54 55 read -resize \$1 \$2;
-#X obj 60 163 s \$0-sizeSecs;
-#X obj 81 142 s \$0-SR;
-#X obj -183 343 dac~;
-#X obj -183 300 catch~ \$0-out1;
-#X obj -162 320 catch~ \$0-out2;
-#X obj -174 -60 s \$0-pre_maxGrains_p;
-#X msg -184 104 \$1 \; pd dsp 1 \; \$1-loadbang1 bang;
-#N canvas 51 22 1195 752 midi 0;
+#X restore 17 347 pd mapping;
+#X obj 254 69 openpanel;
+#X obj 254 91 symbol;
+#X obj 254 206 soundfiler;
+#X obj 254 272 /;
+#X obj 269 251 samplerate~;
+#X obj 254 314 * 1000;
+#X obj 254 25 r \$0-loadFile;
+#X text 44 47 <-- number of grains per default;
+#X obj 269 228 r \$0-loadbang1;
+#X obj 16 212 pipe 100;
+#X obj 281 359 s \$0-sizeMs;
+#X obj 254 337 t b f;
+#X obj 254 403 s \$0-soundfile;
+#X msg 254 381 normalize;
+#X obj 299 144 symbol \$0-soundfile;
+#X obj 254 113 t s b;
+#X obj 254 165 pack s s;
+#X msg 254 185 read -resize \$1 \$2;
+#X obj 260 293 s \$0-sizeSecs;
+#X obj 281 272 s \$0-SR;
+#X obj 17 473 dac~;
+#X obj 17 430 catch~ \$0-out1;
+#X obj 38 450 catch~ \$0-out2;
+#X obj 26 70 s \$0-pre_maxGrains_p;
+#X msg 16 234 \$1 \; pd dsp 1 \; \$1-loadbang1 bang;
+#N canvas 1 23 1258 699 midi 0;
 #X msg 115 132 1;
 #X obj 18 63 s pd-fileGrainder.pd;
 #X obj 20 268 s \$0-grainSizeMean_p;
@@ -559,31 +564,31 @@
 #X obj 829 347 midilearn \$0;
 #X obj 959 347 midilearn \$0;
 #X obj 959 390 * 50;
-#X msg 805 550 11;
-#X obj 718 528 s \$0-savePatch;
-#X msg 935 550 13;
-#X obj 848 528 s \$0-savePatch;
-#X obj 710 572 / 127;
-#X obj 840 572 / 127;
-#X obj 840 638 int;
-#X obj 710 550 midilearn \$0;
-#X obj 840 550 midilearn \$0;
-#X obj 840 593 * 50;
+#X msg 805 536 11;
+#X obj 718 514 s \$0-savePatch;
+#X msg 935 536 13;
+#X obj 848 514 s \$0-savePatch;
+#X obj 710 558 / 127;
+#X obj 840 558 / 127;
+#X obj 840 624 int;
+#X obj 710 536 midilearn \$0;
+#X obj 840 536 midilearn \$0;
+#X obj 840 579 * 50;
 #X obj 829 457 s \$0-attackMean_p;
 #X obj 959 457 s \$0-attackDev_p;
 #X obj 829 303 r \$0-attackMean_l;
 #X obj 959 303 r \$0-attackDev_l;
-#X obj 710 506 r \$0-releaseMean_l;
-#X obj 710 660 s \$0-releaseMean_p;
-#X obj 840 660 s \$0-releaseDev_p;
-#X obj 840 506 r \$0-releaseDev_l;
-#X obj 710 638 int;
+#X obj 710 492 r \$0-releaseMean_l;
+#X obj 710 646 s \$0-releaseMean_p;
+#X obj 840 646 s \$0-releaseDev_p;
+#X obj 840 492 r \$0-releaseDev_l;
+#X obj 710 624 int;
 #X obj 569 390 * 99;
 #X obj 569 413 + 1;
 #X obj 829 390 * 99;
 #X obj 829 413 + 1;
-#X obj 710 593 * 99;
-#X obj 710 616 + 1;
+#X obj 710 579 * 99;
+#X obj 710 602 + 1;
 #X connect 0 0 89 1;
 #X connect 3 0 4 0;
 #X connect 3 0 89 0;
@@ -799,23 +804,23 @@
 #X connect 207 0 180 0;
 #X connect 208 0 209 0;
 #X connect 209 0 203 0;
-#X restore -183 238 pd midi;
-#N canvas 438 22 391 456 waveform 0;
-#X obj 24 320 set timeline x;
-#X obj -75 409 set error x;
-#X obj -25 342 set error width;
-#X msg 62 269 traverse pd-wave \, next \, next;
-#X obj 62 291 pointer error timeline;
+#X restore 17 368 pd midi;
+#N canvas 438 22 421 493 waveform 0;
+#X obj 177 355 set timeline x;
+#X obj 78 444 set error x;
+#X obj 128 377 set error width;
+#X msg 215 304 traverse pd-wave \, next \, next;
+#X obj 215 326 pointer error timeline;
 #N canvas 84 507 258 75 timeline 0;
 #X obj -132 7 struct timeline float x float y;
 #X obj -133 33 filledpolygon 0 600 1 x 2 x;
-#X restore -128 -19 pd timeline;
+#X restore 25 16 pd timeline;
 #N canvas 272 411 554 176 error 0;
 #X obj -132 7 struct error float x float y float width;
 #X obj -132 38 drawpolygon 50 1 0 0 0 2 width 2 width 0 0 0;
-#X restore -128 2 pd error;
-#X obj -75 143 -;
-#X obj 62 248 loadbang;
+#X restore 25 37 pd error;
+#X obj 78 178 -;
+#X obj 215 283 loadbang;
 #N canvas 154 239 450 300 rebuild 0;
 #X obj 177 173 pointer;
 #X msg 143 71 bang;
@@ -838,28 +843,28 @@
 #X connect 5 3 8 0;
 #X connect 7 0 0 0;
 #X connect 9 0 6 0;
-#X restore -128 24 pd rebuild;
-#X obj -37 2 unpack;
-#X obj -37 -22 r \$0-readOffset;
-#X obj -128 173 +;
-#X obj -128 241 -;
-#X msg -128 219 1 \$1;
-#X obj -128 197 max 1;
-#X obj -25 321 change;
-#X obj -75 387 change;
-#X obj -37 66 t f f;
-#X obj -75 365 clip 0 1;
-#X obj -48 186 min 0;
-#X obj 13 70 t f f;
-#X obj -87 117 t f f;
-#X obj -128 117 t f f;
-#X obj -75 164 t f f;
-#X obj -63 273 +;
-#X obj -25 299 +;
-#X obj 24 291 * 0.5;
-#X obj -10 279 * 2;
-#X obj 13 43 * 0.01;
-#X obj -37 44 * 0.01;
+#X restore 25 59 pd rebuild;
+#X obj 116 37 unpack;
+#X obj 116 13 r \$0-readOffset;
+#X obj 25 208 +;
+#X obj 25 276 -;
+#X msg 25 254 1 \$1;
+#X obj 25 232 max 1;
+#X obj 128 356 change;
+#X obj 78 422 change;
+#X obj 116 101 t f f;
+#X obj 78 400 clip 0 1;
+#X obj 105 221 min 0;
+#X obj 166 105 t f f;
+#X obj 66 152 t f f;
+#X obj 25 152 t f f;
+#X obj 78 199 t f f;
+#X obj 90 308 +;
+#X obj 128 334 +;
+#X obj 177 326 * 0.5;
+#X obj 143 314 * 2;
+#X obj 166 78 * 0.01;
+#X obj 116 79 * 0.01;
 #X connect 3 0 4 0;
 #X connect 4 0 1 1;
 #X connect 4 0 2 1;
@@ -893,18 +898,18 @@
 #X connect 28 0 26 1;
 #X connect 29 0 21 0;
 #X connect 30 0 18 0;
-#X restore -183 259 pd waveform;
+#X restore 17 389 pd waveform;
 #N canvas 661 22 215 556 loadbang 0;
-#X obj 11 -20 \$0;
-#X obj 11 -39 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 11 50 \$0;
+#X obj 11 31 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 11 -59 r \$0-loadbang1;
-#X obj 11 415 metro;
-#X obj 11 371 delay 200;
-#X msg 11 392 1;
-#X obj 48 392 r \$0-speedLimit;
-#X obj 11 436 s \$0-clock;
-#X msg 11 0 bang \; \$1-grainSizeMean_p 80 \; \$1-grainSizeDev_p 10
+#X obj 11 11 r \$0-loadbang1;
+#X obj 11 485 metro;
+#X obj 11 441 delay 200;
+#X msg 11 462 1;
+#X obj 48 462 r \$0-speedLimit;
+#X obj 11 506 s \$0-clock;
+#X msg 11 70 bang \; \$1-grainSizeMean_p 80 \; \$1-grainSizeDev_p 10
 \; \$1-readOffsetMean_p 50 \; \$1-readOffsetDev_p 5 \; \$1-silenceMean_p
 5 \; \$1-silenceDev_p 5 \; \$1-octave_p 1 \; \$1-detune 10 \; \$1-volumeMean_p
 90 \; \$1-volumeDev_p 10 \; \$1-panMean_p 0 \; \$1-panDev_p 45 \; \$1-peakMean_p
@@ -921,49 +926,49 @@
 #X connect 5 0 3 0;
 #X connect 6 0 3 1;
 #X connect 8 0 4 0;
-#X restore -183 153 pd loadbang;
-#X msg -184 -82 2;
-#X msg -184 8 \$2 \; \$2-initStart 0 \; pd dsp 0 \; \$2-maxGrains \$1
+#X restore 17 283 pd loadbang;
+#X msg 16 48 2;
+#X msg 16 138 \$2 \; \$2-initStart 0 \; pd dsp 0 \; \$2-maxGrains \$1
 \; \$2-active_p range 1 \$1;
 #N canvas 355 217 450 300 todo's 0;
 #X text 12 25 -make graphics interactive;
 #X text 12 5 -add graphic information for grainsize;
-#X restore -183 279 pd todo's;
+#X restore 17 409 pd todo's;
 #N canvas 669 200 259 511 env_graph 0;
-#X obj -564 72 until;
-#X obj -564 189 moses;
-#X obj -564 98 f 0;
-#X obj -533 98 + 1;
-#X obj -477 146 + 1;
-#X msg -519 70 0;
-#X obj -564 49 t f bang;
-#X obj -549 266 /;
-#X msg -549 246 1 \$1;
-#X obj -564 286 *;
-#X obj -508 237 -;
-#X msg -508 216 1 \$1;
-#X msg -471 216 1 \$1;
-#X obj -471 236 -;
-#X obj -508 258 /;
-#X obj -564 145 * 0.01;
-#X msg -564 27 100;
-#X obj -564 6 r \$0-calculate;
-#X obj -465 101 t b f;
-#X obj -465 123 s \$0-calculate;
-#X obj -516 416 t b f;
-#X obj -516 438 s \$0-calculate;
-#X obj -460 307 t b f;
-#X obj -460 329 s \$0-calculate;
-#X obj -564 457 circular_sigmoid;
-#X obj -508 351 circular_sigmoid;
-#X obj -465 52 r \$0-peak;
-#X obj -465 75 unpack;
-#X obj -516 396 unpack;
-#X obj -460 287 unpack;
-#X obj -564 481 tabwrite \$0-env;
-#X obj -564 123 trigger float f;
-#X obj -460 267 r \$0-release;
-#X obj -515 375 r \$0-attack;
+#X obj 41 75 until;
+#X obj 41 192 moses;
+#X obj 41 101 f 0;
+#X obj 72 101 + 1;
+#X obj 128 149 + 1;
+#X msg 86 73 0;
+#X obj 41 52 t f bang;
+#X obj 56 269 /;
+#X msg 56 249 1 \$1;
+#X obj 41 289 *;
+#X obj 97 240 -;
+#X msg 97 219 1 \$1;
+#X msg 134 219 1 \$1;
+#X obj 134 239 -;
+#X obj 97 261 /;
+#X obj 41 148 * 0.01;
+#X msg 41 30 100;
+#X obj 41 9 r \$0-calculate;
+#X obj 140 104 t b f;
+#X obj 140 126 s \$0-calculate;
+#X obj 89 419 t b f;
+#X obj 89 441 s \$0-calculate;
+#X obj 145 310 t b f;
+#X obj 145 332 s \$0-calculate;
+#X obj 41 460 circular_sigmoid;
+#X obj 97 354 circular_sigmoid;
+#X obj 140 55 r \$0-peak;
+#X obj 140 78 unpack;
+#X obj 89 399 unpack;
+#X obj 145 290 unpack;
+#X obj 41 484 tabwrite \$0-env;
+#X obj 41 126 trigger float f;
+#X obj 145 270 r \$0-release;
+#X obj 90 378 r \$0-attack;
 #X connect 0 0 2 0;
 #X connect 1 0 9 0;
 #X connect 1 1 11 0;
@@ -1003,46 +1008,49 @@
 #X connect 31 1 4 0;
 #X connect 32 0 29 0;
 #X connect 33 0 28 0;
-#X restore -109 153 pd env_graph;
-#X obj 30 321 path ./abs;
-#X connect 0 0 35 0;
+#X restore 91 283 pd env_graph;
+#X obj 254 47 getdir;
+#X obj 140 445 declare -path abs -stdpath maxlib -stdpath hcs -stdpath
+iemlib -stdpath mapping -stdpath zexy -stdpath ggee -stdpath purepd
+-stdpath motex -stdpath cyclone;
+#X connect 0 0 34 0;
 #X connect 2 0 3 0;
-#X connect 3 0 36 0;
+#X connect 3 0 35 0;
 #X connect 6 0 7 0;
-#X connect 7 0 22 0;
+#X connect 7 0 21 0;
 #X connect 8 0 9 0;
 #X connect 9 0 11 0;
-#X connect 9 0 25 0;
+#X connect 9 0 24 0;
 #X connect 10 0 9 1;
-#X connect 10 0 26 0;
-#X connect 11 0 18 0;
-#X connect 12 0 6 0;
-#X connect 13 0 12 0;
-#X connect 15 0 10 0;
-#X connect 16 0 31 0;
-#X connect 18 0 20 0;
-#X connect 18 1 17 0;
-#X connect 20 0 19 0;
-#X connect 21 0 23 1;
+#X connect 10 0 25 0;
+#X connect 11 0 17 0;
+#X connect 12 0 38 0;
+#X connect 14 0 10 0;
+#X connect 15 0 30 0;
+#X connect 17 0 19 0;
+#X connect 17 1 16 0;
+#X connect 19 0 18 0;
+#X connect 20 0 22 1;
+#X connect 21 0 22 0;
+#X connect 21 1 20 0;
 #X connect 22 0 23 0;
-#X connect 22 1 21 0;
-#X connect 23 0 24 0;
-#X connect 24 0 8 0;
-#X connect 28 0 27 0;
-#X connect 29 0 27 1;
-#X connect 35 0 3 0;
-#X connect 35 0 30 0;
-#X connect 36 0 16 0;
-#X restore 168 -213 pd patch;
-#X obj -14 -38 bng 8 250 50 0 \$0-filterQMean_l nothing empty 17 7
+#X connect 23 0 8 0;
+#X connect 27 0 26 0;
+#X connect 28 0 26 1;
+#X connect 34 0 3 0;
+#X connect 34 0 29 0;
+#X connect 35 0 15 0;
+#X connect 38 0 6 0;
+#X restore 545 7 pd patch;
+#X obj 363 182 bng 8 250 50 0 \$0-filterQMean_l nothing empty 17 7
 0 10 -228856 -1 -1;
-#X obj 36 -38 bng 8 250 50 0 \$0-filterQDev_l nothing empty 17 7 0
+#X obj 413 182 bng 8 250 50 0 \$0-filterQDev_l nothing empty 17 7 0
 10 -228856 -1 -1;
-#X obj 178 42 nbx 3 14 1 2 0 0 \$0-active \$0-active_p empty 0 -8 0
-10 -228856 -1 -1 1 256;
-#X text -361 -216 GENERAL SETTINGS;
-#X text -372 308 angelfaraldo@gmail.com - 2013;
-#X text 175 21 voices;
+#X obj 555 262 nbx 3 14 1 2 0 0 \$0-active \$0-active_p empty 0 -8
+0 10 -228856 -1 -1 1 256;
+#X text 16 4 GENERAL SETTINGS;
+#X text 5 528 angelfaraldo@gmail.com - 2013;
+#X text 552 241 voices;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array \$0-env 103 float 1;
 #A 0 0 0 0.000400156 0.00160256 0.00361305 0.0064415 0.0101021 0.0146136
@@ -1058,41 +1066,46 @@
 0.0729169 0.0613658 0.0510011 0.0417424 0.0335239 0.0262913 0.02 0.0146136
 0.0101021 0.0064415 0.00361305 0.00160259 0.000400156 0 0;
 #X coords 0 1 102 0 30 30 1 0 0;
-#X restore 138 -109 graph;
-#X floatatom -133 -96 3 1 99 0 - #0-peakMean_p #0-peakMean;
-#X floatatom -92 -95 3 0 50 0 - #0-peakDev_p #0-peakDev;
-#X obj -104 -95 bng 8 250 50 0 \$0-peakDev_l nothing empty 17 7 0 10
+#X restore 515 111 graph;
+#X floatatom 244 124 3 1 99 0 - #0-peakMean_p #0-peakMean, f 3;
+#X floatatom 285 125 3 0 50 0 - #0-peakDev_p #0-peakDev, f 3;
+#X obj 273 125 bng 8 250 50 0 \$0-peakDev_l nothing empty 17 7 0 10
 -228856 -1 -1;
-#X obj -144 -91 bng 8 250 50 0 \$0-peakMean_l nothing empty 17 7 0
+#X obj 233 129 bng 8 250 50 0 \$0-peakMean_l nothing empty 17 7 0 10
+-228856 -1 -1;
+#X text 242 161 filter frequency;
+#X text 372 161 filter Q;
+#X text 230 90 ENVELOPE;
+#X floatatom 334 124 3 1 99 0 - #0-attackMean_p #0-attackMean, f 3
+;
+#X floatatom 375 125 3 0 50 0 - #0-attackDev_p #0-attackDev, f 3;
+#X obj 363 125 bng 8 250 50 0 \$0-attackDev_l nothing empty 17 7 0
 10 -228856 -1 -1;
-#X text -135 -59 filter frequency;
-#X text -5 -59 filter Q;
-#X text -147 -130 ENVELOPE;
-#X floatatom -43 -96 3 1 99 0 - #0-attackMean_p #0-attackMean;
-#X floatatom -2 -95 3 0 50 0 - #0-attackDev_p #0-attackDev;
-#X obj -14 -95 bng 8 250 50 0 \$0-attackDev_l nothing empty 17 7 0
+#X obj 323 125 bng 8 250 50 0 \$0-attackMean_l nothing empty 17 7 0
 10 -228856 -1 -1;
-#X obj -54 -95 bng 8 250 50 0 \$0-attackMean_l nothing empty 17 7 0
+#X floatatom 424 124 3 1 99 0 - #0-releaseMean_p #0-releaseMean, f
+3;
+#X floatatom 465 125 3 0 50 0 - #0-releaseDev_p #0-releaseDev, f 3
+;
+#X obj 453 125 bng 8 250 50 0 \$0-releaseDev_l nothing empty 17 7 0
 10 -228856 -1 -1;
-#X floatatom 47 -96 3 1 99 0 - #0-releaseMean_p #0-releaseMean;
-#X floatatom 88 -95 3 0 50 0 - #0-releaseDev_p #0-releaseDev;
-#X obj 76 -95 bng 8 250 50 0 \$0-releaseDev_l nothing empty 17 7 0
-10 -228856 -1 -1;
-#X obj 36 -95 bng 8 250 50 0 \$0-releaseMean_l nothing empty 17 7 0
-10 -228856 -1 -1;
-#X text -135 -116 peak (%);
-#X text -45 -116 attack (%);
-#X text 45 -116 release (%);
-#X floatatom -370 -157 3 0 16 0 - #0-midiChannel_p #0-midiChannel;
-#X text -343 -157 midi channel (0 for OMNI MODE);
-#X obj 57 102 hradio 15 1 0 3 \$0-octave \$0-octave_p empty 0 -8 0
+#X obj 413 125 bng 8 250 50 0 \$0-releaseMean_l nothing empty 17 7
+0 10 -228856 -1 -1;
+#X text 242 104 peak (%);
+#X text 332 104 attack (%);
+#X text 422 104 release (%);
+#X floatatom 7 63 3 0 16 0 - #0-midiChannel_p #0-midiChannel, f 3
+;
+#X text 34 63 midi channel (0 for OMNI MODE);
+#X obj 434 322 hradio 15 1 0 3 \$0-octave \$0-octave_p empty 0 -8 0
 10 -228856 -1 -1 1;
-#X text 55 80 octave;
-#X text 125 80 detune (cents);
-#X text -147 -71 FILTER;
-#X floatatom 107 -39 5 0.1 100 0 - #0-changeRate_p #0-changeRate;
-#X obj 96 -38 bng 8 250 50 0 \$0-changeRate_l nothing empty 17 7 0
+#X text 432 300 octave;
+#X text 502 300 detune (cents);
+#X text 230 149 FILTER;
+#X floatatom 484 181 5 0.1 100 0 - #0-changeRate_p #0-changeRate,
+f 5;
+#X obj 473 182 bng 8 250 50 0 \$0-changeRate_l nothing empty 17 7 0
 10 -228856 -1 -1;
-#X text 105 -59 change rate (Hz);
-#X text -344 -197 maximum number of grains;
-#X text -343 -177 (ms.) speed limit for critical calculations;
+#X text 482 161 change rate (Hz);
+#X text 33 23 maximum number of grains;
+#X text 34 43 (ms.) speed limit for critical calculations;
