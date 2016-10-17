@@ -12,3 +12,5 @@ file-grainder. Takes a mono soundfile (.wav) and performs granular synthesis on 
 osc-grainder. Granular synthesis with sine waves.
 
 pulse-grainder. Granular synthesis with unit-pulses and karplus-strong resonances.
+
+VoSim. Simple implementation of the VoSim (Voice Simulation) synchronous granular technique.
