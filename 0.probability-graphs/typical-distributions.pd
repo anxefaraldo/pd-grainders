@@ -1,0 +1,560 @@
+#N canvas 896 37 400 207 10;
+#X declare -stdpath maxlib;
+#N canvas 25 99 884 587 gauss 0;
+#N canvas 0 22 474 324 (subpatch) 0;
+#X array gauss 100 float 1;
+#A 0 -10.3783 -13.917 -13.1685 -7.59903 8.46714 4.70703 -4.87823 5.68744
+-2.97413 -0.262585 4.44184 -9.46472 8.74455 9.77226 -0.346742 -12.4505
+-10.3779 4.48184 -6.30721 -9.05516 -13.4024 -9.60297 2.10205 8.92053
+-3.29538 4.43879 -14.0306 19.7021 -1.87824 0.547886 1.55504 -3.21088
+10.5354 -8.40472 20.8418 8.04093 16.1365 -1.00434 2.28636 5.62007 8.12446
+13.1379 -5.48771 -12.1596 14.4574 -9.7507 8.32864 35.1942 15.463 11.8023
+11.7822 -6.36764 -12.4776 1.79784 5.99561 -13.627 -13.9409 -3.41887
+7.92174 -1.68557 3.85344 11.5196 11.15 5.90849 8.84199 -2.81693 3.91079
+-0.536599 4.55642 0.103807 -12.4351 -20.4222 3.00712 -6.94568 -11.5965
+-2.11693 17.7449 -20.5307 -14.2619 -12.605 -26.7946 -0.803776 -6.86806
+-5.37155 13.0154 0.592604 -6.186 -2.86911 -4.90269 -1.3316 6.20987
+-14.5675 2.73606 14.5029 3.3769 -2.74415 -8.50436 3.60511 3.85542 3.60572
+;
+#X coords 0 100 99 -100 800 400 1;
+#X restore 54 153 graph;
+#X floatatom 289 33 5 0 100 1 indice(x) - -, f 5;
+#X obj 31 92 f;
+#X floatatom 92 45 5 0 0 0 - - -, f 5;
+#X obj 57 92 + 1;
+#X msg 92 86 stop;
+#X obj 31 30 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 31 48 t b 0;
+#X floatatom 210 94 10 0 0 0 - - -, f 10;
+#X obj 210 47 bang;
+#X obj 210 116 tabwrite gauss;
+#X floatatom 449 57 5 0 0 2 media - -, f 5;
+#X floatatom 380 57 5 0 0 2 desviacion - -, f 5;
+#X obj 140 59 s dibgauss;
+#X obj 289 11 r dibgauss;
+#X obj 92 65 sel 100;
+#X obj 31 70 metro 30;
+#X text 51 27 <-(re)dibujar tablas;
+#X obj 210 71 gauss 10 0;
+#X obj 503 25 loadbang;
+#X msg 501 46 gauss bounds 0 100 100 -100 \; gauss xlabel -103 0 10
+20 30 40 50 60 70 80 90 100 \; gauss xticks 0 10 1 \; gauss ylabel
+-1.5 -100 -75 -50 -25 0 25 50 75 100 \; gauss yticks 0 25 1;
+#X connect 1 0 9 0;
+#X connect 1 0 10 1;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 13 0;
+#X connect 3 0 15 0;
+#X connect 4 0 2 1;
+#X connect 5 0 16 0;
+#X connect 6 0 7 0;
+#X connect 7 0 16 0;
+#X connect 7 1 2 0;
+#X connect 8 0 10 0;
+#X connect 9 0 18 0;
+#X connect 11 0 18 2;
+#X connect 12 0 18 1;
+#X connect 14 0 1 0;
+#X connect 15 0 5 0;
+#X connect 16 0 2 0;
+#X connect 18 0 8 0;
+#X connect 19 0 20 0;
+#X restore 264 93 pd gauss;
+#N canvas 20 22 884 606 weibull 0;
+#N canvas 0 22 474 324 (subpatch) 0;
+#X array weibull 100 float 1;
+#A 0 0.00460551 0.819803 9.1394 47.8339 2.20678 0.0155679 0.244543
+0.683899 1.05632 0.0555658 0.521177 0.252736 0.00865872 0.194033 0.0358256
+0.506014 1.29869 16.0195 0.303586 0.126904 0.980913 1.79181 0.55054
+0.410548 0.16929 3.35847 1.09814 0.0177021 0.0235202 0.201026 0.562457
+0.456434 0.442019 5.47255 2.16056 3.22166 0.114865 1.12234 8.85146
+1.36974 0.815119 2.09226 0.762634 0.119101 0.287323 0.0537293 6.24866
+0.199486 1.00373 9.92101 3.55245 0.0486227 0.856915 18.615 2.77462
+0.528988 2.51509 11.1481 1.48163 16.0546 0.495783 0.829032 2.41232
+2.23206 0.167872 0.44532 0.0973281 0.0506758 0.170204 1.49089 2.26915e-06
+9.92649 7.26371 1.64403 0.0145645 3.93987 0.0250629 19.3081 0.116876
+0.0324569 0.243726 1.00297 2.90184 4.17189 21.1627 0.11117 0.00293648
+5.9622 0.0919727 13.1666 0.161894 3.34334 0.00841812 4.42665 1.15011
+3.72182 0.070358 0.374007 1.1262 0.0211236;
+#X coords 0 100 100 0 800 400 1;
+#X restore 41 170 graph;
+#X floatatom 295 37 5 0 100 1 indice(x) - -, f 5;
+#X obj 12 123 f;
+#X floatatom 73 76 5 0 0 0 - - -, f 5;
+#X obj 38 123 + 1;
+#X msg 73 119 stop;
+#X obj 12 61 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 12 79 t b 0;
+#X floatatom 204 94 8 0 0 0 - - -, f 8;
+#X obj 204 51 bang;
+#X floatatom 427 58 5 0 0 2 t - -, f 5;
+#X floatatom 385 58 5 0 0 2 s - -, f 5;
+#X obj 204 113 tabwrite weibull;
+#X obj 295 16 r dibweibull;
+#X obj 122 90 s dibweibull;
+#X obj 73 98 sel 100;
+#X text 31 58 <-(re)dibujar tabla;
+#X obj 474 22 loadbang;
+#X msg 474 43 \; weibull bounds 0 100 100 0 \; weibull xlabel -1.05
+0 10 20 30 40 50 60 70 80 90 100 \; weibull xticks 0 10 1 \; weibull
+ylabel -1.5 0 10 20 30 40 50 60 70 80 90 100 \; weibull yticks 0 10
+1;
+#X obj 204 72 weibull 2 0.5;
+#X obj 12 101 metro 1;
+#X connect 1 0 9 0;
+#X connect 1 0 12 1;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 14 0;
+#X connect 3 0 15 0;
+#X connect 4 0 2 1;
+#X connect 5 0 20 0;
+#X connect 6 0 7 0;
+#X connect 7 0 20 0;
+#X connect 7 1 2 0;
+#X connect 8 0 12 0;
+#X connect 9 0 19 0;
+#X connect 10 0 19 2;
+#X connect 11 0 19 1;
+#X connect 13 0 1 0;
+#X connect 15 0 5 0;
+#X connect 17 0 18 0;
+#X connect 19 0 8 0;
+#X connect 20 0 2 0;
+#X restore 162 114 pd weibull;
+#N canvas 2 22 879 598 beta 0;
+#N canvas 0 22 470 320 (subpatch) 0;
+#X array beta 100 float 1;
+#A 0 0.536166 0.334051 0.140531 0.589331 0.542114 0.0487229 0.17459
+0.0225478 0.613846 0.429007 0.156211 9.47694e-05 0.0266268 0.00301388
+0.0717984 0.742579 0.16759 0.94985 0.675266 0.00245409 0.167206 0.340271
+0.0132634 0.0191301 0.0302532 0.505834 0.360951 0.491009 0.13053 0.380352
+0.735403 0.266077 0.00367946 0.457459 0.6094 0.0232101 0.00294292 0.0444337
+0.188838 0.89274 0.592994 0.214119 0.593116 0.718776 0.671222 0.0493691
+0.568631 0.666051 0.842681 0.984918 0.00679238 0.0187082 0.00146508
+0.345096 0.0153716 0.159237 0.759765 0.4336 0.277937 0.54952 0.326557
+0.324096 0.0120904 0.00269531 0.318822 0.00312224 0.00365387 0.0138658
+0.7079 0.266568 0.294444 0.122053 0.0211089 0.71267 0.463126 0.887412
+0.959973 0.00322232 0.0508524 0.414012 0.00555204 0.286946 0.641156
+0.00219082 0.781087 0.869359 0.0823746 0.786178 0.331247 0.0690614
+0.598177 0.0047408 0.651881 0.145011 0.00208857 0.276802 0.75209 0.532578
+0.56798 0.46421;
+#X coords 0 1 100 0 800 400 1;
+#X restore 61 160 graph;
+#X floatatom 275 42 5 0 100 1 indice(x) - -, f 5;
+#X obj 31 89 f;
+#X floatatom 92 42 5 0 0 0 - - -, f 5;
+#X obj 57 89 + 1;
+#X msg 92 85 stop;
+#X obj 31 28 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 31 45 t b 0;
+#X floatatom 202 97 8 0 0 0 - - -, f 8;
+#X obj 202 56 bang;
+#X floatatom 411 60 5 0 0 2 b - -, f 5;
+#X floatatom 369 60 5 0 0 2 a - -, f 5;
+#X obj 202 115 tabwrite beta;
+#X obj 275 20 r dibbeta;
+#X obj 140 58 s dibbeta;
+#X obj 202 76 beta 0.5 1;
+#X obj 92 62 sel 100;
+#X text 51 26 <-(re)dibujar tabla;
+#X msg 467 47 \; beta bounds 0 1 100 0 \; beta xlabel -0.02 0 10 20
+30 40 50 60 70 80 90 100 \; beta xticks 0 10 1 \; beta ylabel -1.5
+0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 \; beta yticks 0 0.1 1;
+#X obj 467 26 loadbang;
+#X obj 31 67 metro 1;
+#X connect 1 0 9 0;
+#X connect 1 0 12 1;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 14 0;
+#X connect 3 0 16 0;
+#X connect 4 0 2 1;
+#X connect 5 0 20 0;
+#X connect 6 0 7 0;
+#X connect 7 0 20 0;
+#X connect 7 1 2 0;
+#X connect 8 0 12 0;
+#X connect 9 0 15 0;
+#X connect 10 0 15 2;
+#X connect 11 0 15 1;
+#X connect 13 0 1 0;
+#X connect 15 0 8 0;
+#X connect 16 0 5 0;
+#X connect 19 0 18 0;
+#X connect 20 0 2 0;
+#X restore 18 93 pd beta;
+#N canvas 9 48 895 630 bilex 0;
+#N canvas 0 22 474 324 (subpatch) 0;
+#X array bilex 100 float 1;
+#A 0 0.00750644 0.000265101 -0.000120944 -0.000708013 -0.000325147
+-3.5674e-05 0.00260857 0.0178169 -0.00434711 0.00352751 0.011645 0.0231074
+0.00220908 0.000942551 0.0091209 -0.00884824 0.0157952 0.00391343 -0.0104967
+-0.0178428 0.00412277 -0.0109137 0.00890499 -0.00027626 -0.00791838
+-0.00577939 -0.00444006 0.00705512 -0.00637488 -0.00280271 0.00329662
+-0.011863 -0.00291651 0.00850226 0.0123316 0.00232437 -0.000948195
+0.00128 0.00406683 -0.0189597 0.00105572 0.000956081 0.00015294 0.00208926
+-0.00245062 0.0035102 0.00260539 -0.00736112 0.0157059 -0.012404 0.00947048
+-0.00214123 0.0076017 0.00475351 -0.00669716 -0.0196654 -0.00166966
+-0.0015069 -0.00835807 -0.00154458 -0.000782597 -0.000456782 -0.0046995
+0.0110956 -0.00699299 0.0171813 -0.00436621 0.0120101 0.0173671 0.0375175
+-0.00491341 0.00155858 -0.00442784 0.0118869 -9.86846e-05 0.00772771
+-0.000350039 0.00539273 -0.0175058 0.000577045 0.00190004 -0.00102452
+0.0139012 -0.00870015 0.00844712 0.0065923 -0.003508 -0.0227953 -0.0204841
+-0.0232408 0.0144682 0.0133506 -0.00104678 0.00118338 -0.0122088 0.00030147
+-0.00500475 -0.0127906 0.00183145 -0.0261928;
+#X coords 0 1 100 -1 800 400 1;
+#X restore 65 187 graph;
+#X floatatom 358 69 5 0 100 1 indice(x) - -, f 5;
+#X obj 101 116 f;
+#X floatatom 156 69 5 0 0 0 - - -, f 5;
+#X obj 127 116 + 1;
+#X msg 156 112 stop;
+#X obj 101 54 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 101 72 t b 0;
+#X floatatom 279 130 5 0 0 0 - - -, f 5;
+#X obj 279 83 bang;
+#X floatatom 394 93 5 0 0 3 lambda - -, f 5;
+#X obj 208 83 s dibbilex;
+#X obj 358 47 r dibbilex;
+#X obj 279 152 tabwrite bilex;
+#X obj 156 89 sel 100;
+#X text 471 157 the larger lambda is \, the closer to 0 is the output.
+;
+#X text 123 51 <-(re)dibujar tablas;
+#X obj 471 36 loadbang;
+#X msg 471 57 \; bilex bounds 0 1 100 -1 \; bilex xlabel -1.05 0 10
+20 30 40 50 60 70 80 90 100 \; bilex xticks 0 10 1 \; bilex ylabel
+-1.5 -1 -0.8 -0.6 -0.4 -0.2 0 0.2 0.4 0.6 0.8 1 \; bilex yticks 0 0.2
+1;
+#X obj 279 107 bilex 5;
+#X obj 101 94 metro 1;
+#X connect 1 0 9 0;
+#X connect 1 0 13 1;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 11 0;
+#X connect 3 0 14 0;
+#X connect 4 0 2 1;
+#X connect 5 0 20 0;
+#X connect 6 0 7 0;
+#X connect 7 0 20 0;
+#X connect 7 1 2 0;
+#X connect 8 0 13 0;
+#X connect 9 0 19 0;
+#X connect 10 0 19 1;
+#X connect 12 0 1 0;
+#X connect 14 0 5 0;
+#X connect 17 0 18 0;
+#X connect 19 0 8 0;
+#X connect 20 0 2 0;
+#X restore 75 93 pd bilex;
+#N canvas 15 91 883 596 cauchy 0;
+#N canvas 0 22 474 324 (subpatch) 0;
+#X array cauchy 100 float 1;
+#A 0 1.45401 6.48178 -3.38997 0.365615 0.785145 -0.190034 1.69228 0.770865
+2.00281 0.221073 -0.0482632 0.000455718 5.07026 -1.12713 -0.393267
+14.8143 -0.255324 -2.25218 0.0299509 0.654836 -1.80191 -0.0374238 -0.386275
+-0.150947 -40.471 -1.79399 -0.0178536 86.6449 -0.950466 0.273843 -0.127563
+0.85918 1.45528 -2.3524 -0.392493 0.203103 -0.0422387 0.567447 1.05831
+1.04961 0.763925 -0.0451212 -0.865729 -3.14695 -16.3744 -0.665643 0.243779
+0.873192 0.463669 -1.37902 0.0916121 -1.02976 -0.615526 0.667313 0.357989
+0.456152 -55.0918 -3.16353 4.22016 -0.871928 -1.3775 -0.60759 0.282845
+-1.8842 -0.603511 0.17305 -1.27673 0.539664 30.4036 -2.98821 0.483551
+-4.14423 0.720574 5.28824 -1.83988 -0.295302 -0.532529 0.545952 12.1584
+13.3962 -0.378595 -0.747551 -0.885986 1.15574 -3.7547 0.0402472 0.725832
+-0.282816 27.3265 -0.67037 -3.34929 -1.14168 -0.50694 -0.17696 -0.0149968
+-0.847365 1.12537 -0.13036 -44.6607 1.1191;
+#X coords 0 100 100 -100 800 400 1;
+#X restore 53 146 graph;
+#X floatatom 355 33 5 0 100 1 indice(x) - -, f 5;
+#X obj 88 82 f;
+#X floatatom 149 35 5 0 0 0 - - -, f 5;
+#X obj 114 82 + 1;
+#X msg 149 78 stop;
+#X obj 88 20 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 88 38 t b 0;
+#X floatatom 270 90 8 0 0 0 - - -, f 8;
+#X obj 270 47 bang;
+#X floatatom 449 54 5 0 0 2 alpha - -, f 5;
+#X obj 150 57 sel 100;
+#X obj 197 48 s dibcauchy;
+#X obj 355 12 r dibcauchy;
+#X obj 270 108 tabwrite cauchy;
+#X text 110 17 <-(re)dibujar tablas;
+#X obj 499 21 loadbang;
+#X msg 499 41 \; cauchy bounds 0 100 100 -100 \; cauchy xlabel -103
+0 10 20 30 40 50 60 70 80 90 100 \; cauchy xticks 0 10 1 \; cauchy
+ylabel -2 -100 -75 -50 -25 0 25 50 75 100 \; cauchy yticks 0 25 1;
+#X obj 270 68 maxlib/cauchy 1;
+#X obj 88 60 metro 1;
+#X connect 1 0 9 0;
+#X connect 1 0 14 1;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 11 0;
+#X connect 3 0 12 0;
+#X connect 4 0 2 1;
+#X connect 5 0 19 0;
+#X connect 6 0 7 0;
+#X connect 7 0 19 0;
+#X connect 7 1 2 0;
+#X connect 8 0 14 0;
+#X connect 9 0 18 0;
+#X connect 10 0 18 1;
+#X connect 11 0 5 0;
+#X connect 13 0 1 0;
+#X connect 16 0 17 0;
+#X connect 18 0 8 0;
+#X connect 19 0 2 0;
+#X restore 138 93 pd cauchy;
+#N canvas 22 135 865 608 expo 0;
+#N canvas 0 22 470 320 (subpatch) 0;
+#X array expo 100 float 1;
+#A 0 0.331254 0.212137 0.898356 0.780458 0.106049 0.116988 0.818973
+0.0598623 0.876051 0.169625 0.231385 1.39136 0.661835 0.228082 0.993716
+0.0763038 1.31475 0.977443 5.22729 1.51016 1.4485 1.13185 1.60277 0.117871
+1.42351 1.36215 0.832024 0.148177 1.17546 0.0689192 0.371296 2.01237
+0.481682 0.889898 0.516457 0.565966 1.58527 0.47372 0.882948 0.302787
+1.26955 2.71264 1.08774 0.504888 1.38326 0.670546 0.525903 1.21099
+0.170821 0.172017 0.108396 0.781907 0.283198 0.103478 0.211188 1.16679
+2.35573 0.342179 0.377225 0.519704 2.69902 0.467314 0.403439 0.950173
+0.18602 2.08127 3.51522 0.146375 0.783193 0.144027 0.536582 0.247201
+0.00200454 1.06915 0.138687 0.706212 0.858674 0.656649 0.12891 1.38468
+0.58395 2.1846 1.75817 0.167928 0.11993 0.666748 1.20155 1.03553 2.24926
+0.284649 0.610721 0.659841 2.25949 0.337903 0.183932 1.20866 0.697089
+0.815951 1.00647 2.67955;
+#X coords 0 20 100 0 800 400 1;
+#X restore 39 160 graph;
+#X floatatom 273 48 5 0 100 1 indice(x) - -, f 5;
+#X obj 23 94 f;
+#X floatatom 84 47 5 0 0 0 - - -, f 5;
+#X obj 49 94 + 1;
+#X msg 84 90 stop;
+#X obj 23 33 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 23 50 t b 0;
+#X floatatom 200 103 5 0 0 0 - - -, f 5;
+#X obj 200 62 bang;
+#X floatatom 367 69 5 0 0 2 lambda - -, f 5;
+#X obj 84 67 sel 100;
+#X obj 415 5 loadbang;
+#X text 42 31 <-(re)dibujar tablas;
+#X obj 132 61 s dibexpo;
+#X obj 200 121 tabwrite expo;
+#X obj 273 26 r dibexpo;
+#X msg 415 25 \; expo bounds 0 20 100 0 \; expo xlabel -0.5 0 10 20
+30 40 50 60 70 80 90 100 \; expo xticks 0 5 1 \; expo ylabel -1.5 0
+5 10 15 20 \; expo yticks 0 5 1;
+#X text 416 121 exponential random function: cuanto mayor es el valor
+de lambda (l > 0) \, menores son los valores (tendencia a 0).;
+#X obj 200 83 expo 0.3;
+#X obj 23 72 metro 1;
+#X connect 1 0 9 0;
+#X connect 1 0 15 1;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 11 0;
+#X connect 3 0 14 0;
+#X connect 4 0 2 1;
+#X connect 5 0 20 0;
+#X connect 6 0 7 0;
+#X connect 7 0 20 0;
+#X connect 7 1 2 0;
+#X connect 8 0 15 0;
+#X connect 9 0 19 0;
+#X connect 10 0 19 1;
+#X connect 11 0 5 0;
+#X connect 12 0 17 0;
+#X connect 16 0 1 0;
+#X connect 19 0 8 0;
+#X connect 20 0 2 0;
+#X restore 207 93 pd expo;
+#N canvas 30 38 876 618 linear 0;
+#N canvas 0 22 474 324 (subpatch) 0;
+#X array linear 100 float 1;
+#A 0 0.386559 0.128281 0.0195988 0.136864 0.271402 0.371728 0.886636
+0.447518 0.345098 0.0622064 0.519102 0.723146 0.103215 0.124191 0.0162943
+0.00677337 0.520372 0.732899 0.344517 0.300799 0.00356502 0.917353
+0.439483 0.307466 0.584153 0.802696 0.443769 0.200939 0.189423 0.00494089
+0.0415188 0.134471 0.0516826 0.143308 0.409136 0.35616 0.523688 0.247978
+0.435433 0.0906615 0.747293 0.711546 0.17607 0.450155 0.0238815 0.144852
+0.178476 0.0352 0.606522 0.376387 0.195769 0.2839 0.504014 0.28045
+0.102732 0.382483 0.397512 0.1591 0.280036 0.465028 0.0751783 0.00347614
+0.42344 0.385002 0.723386 0.613721 0.346157 0.0663538 0.00733775 0.325602
+0.252369 0.82728 0.0900569 0.0121408 0.836968 0.0497749 0.325618 0.662922
+0.126673 0.429881 0.012075 0.179356 0.434985 0.133652 0.281569 0.325621
+0.449792 0.659117 0.267709 0.388742 0.500994 0.19995 0.174074 0.316062
+0.0608239 0.342169 0.0115086 0.15959 0.230897 0.747066;
+#X coords 0 1 100 0 800 400 1;
+#X restore 44 172 graph;
+#X floatatom 311 44 5 0 100 1 indice(x) - -, f 5;
+#X obj 30 85 f;
+#X floatatom 91 38 5 0 0 0 - - -, f 5;
+#X obj 56 85 + 1;
+#X msg 91 81 stop;
+#X obj 30 23 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 30 41 t b 0;
+#X floatatom 226 105 5 0 0 0 - - -, f 5;
+#X obj 226 58 bang;
+#X obj 30 63 metro 30;
+#X obj 91 58 sel 100;
+#X text 50 20 <-(re)dibujar tablas;
+#X obj 149 52 s diblinear;
+#X obj 311 22 r diblinear;
+#X obj 226 82 linear;
+#X obj 226 127 tabwrite linear;
+#X obj 436 31 loadbang;
+#X msg 436 52 \; linear bounds 0 1 100 0 \; linear xlabel -0.02 0 10
+20 30 40 50 60 70 80 90 100 \; linear xticks 0 10 1 \; linear ylabel
+-1.5 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 \; linear yticks 0 0.2
+1;
+#X text 438 139 Linearly distributed random numbers: output between
+0 and 1;
+#X connect 1 0 9 0;
+#X connect 1 0 16 1;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 11 0;
+#X connect 3 0 13 0;
+#X connect 4 0 2 1;
+#X connect 5 0 10 0;
+#X connect 6 0 7 0;
+#X connect 7 0 10 0;
+#X connect 7 1 2 0;
+#X connect 8 0 16 0;
+#X connect 9 0 15 0;
+#X connect 10 0 2 0;
+#X connect 11 0 5 0;
+#X connect 14 0 1 0;
+#X connect 15 0 8 0;
+#X connect 17 0 18 0;
+#X restore 239 114 pd linear;
+#N canvas 3 22 891 639 poisson 0;
+#N canvas 0 22 474 324 (subpatch) 0;
+#X array poisson 100 float 3;
+#A 0 2 7 2 5 4 6 7 5 4 3 2 3 8 3 3 3 0 2 1 2 5 3 5 6 3 7 3 5 2 4 8
+3 4 1 1 4 3 2 6 3 3 4 6 2 4 4 1 2 2 6 3 7 3 4 5 3 5 2 4 3 5 2 7 6 4
+1 3 3 1 6 5 4 2 3 1 3 6 6 5 2 1 3 3 1 2 3 2 4 5 7 1 2 4 3 4 3 2 2 3
+1;
+#X coords 0 10 100 0 800 400 1;
+#X restore 48 193 graph;
+#X floatatom 313 47 5 0 100 1 indice(x) - -, f 5;
+#X obj 34 118 f;
+#X floatatom 95 71 5 0 0 0 - - -, f 5;
+#X obj 60 118 + 1;
+#X msg 95 114 stop;
+#X obj 34 56 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 34 74 t b 0;
+#X floatatom 222 108 10 0 0 0 - - -, f 10;
+#X obj 222 61 bang;
+#X floatatom 409 71 5 0 0 2 lambda - -, f 5;
+#X obj 95 91 sel 100;
+#X obj 222 85 poisson 2.2;
+#X text 54 55 <-(re)dibujar tablas;
+#X obj 143 85 s dibpoisson;
+#X obj 468 35 loadbang;
+#X obj 313 25 r dibpoisson;
+#X obj 222 130 tabwrite poisson;
+#X msg 468 55 \; poisson bounds 0 10 100 0 \; poisson xlabel -0.11
+0 10 20 30 40 50 60 70 80 90 100 \; poisson xticks 0 10 1 \; poisson
+ylabel -1 1 2 3 4 5 6 7 8 9 10 \; poisson yticks 0 1 1;
+#X text 469 142 Poisson distributed random numbers. Lambda is the value
+wich is most likely to appear. Outputs integers >= 0 Decimal values
+of lambda are allowed.;
+#X obj 34 96 metro 1;
+#X connect 1 0 9 0;
+#X connect 1 0 17 1;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 11 0;
+#X connect 3 0 14 0;
+#X connect 4 0 2 1;
+#X connect 5 0 20 0;
+#X connect 6 0 7 0;
+#X connect 7 0 20 0;
+#X connect 7 1 2 0;
+#X connect 8 0 17 0;
+#X connect 9 0 12 0;
+#X connect 10 0 12 1;
+#X connect 11 0 5 0;
+#X connect 12 0 8 0;
+#X connect 15 0 18 0;
+#X connect 16 0 1 0;
+#X connect 20 0 2 0;
+#X restore 18 114 pd poisson;
+#N canvas 18 33 875 597 triang 0;
+#N canvas 0 22 474 324 (subpatch) 0;
+#X array triang 100 float 1;
+#A 0 0.403378 0.399533 0.457808 0.440031 0.488266 0.606571 0.105899
+0.508301 0.268807 0.547975 0.624027 0.251366 0.222861 0.454192 0.952895
+0.440107 0.530351 0.623798 0.397275 0.372555 0.366115 0.560396 0.356624
+0.448256 0.06798 0.484237 0.930448 0.617389 0.179754 0.718986 0.39877
+0.704993 0.869121 0.453383 0.577639 0.610218 0.220588 0.378033 0.549623
+0.38052 0.903561 0.697088 0.269143 0.66097 0.715217 0.514954 0.0431532
+0.51822 0.498535 0.598025 0.38641 0.640065 0.93524 0.511399 0.752052
+0.409375 0.713721 0.130619 0.637028 0.353526 0.0721 0.028367 0.562593
+0.468429 0.216193 0.736167 0.929792 0.417905 0.612323 0.881146 0.749794
+0.607822 0.655477 0.697699 0.249596 0.635289 0.212149 0.414274 0.352321
+0.612995 0.0384686 0.515046 0.532655 0.868328 0.572924 0.376644 0.547502
+0.517548 0.104526 0.27987 0.54123 0.415159 0.315775 0.796426 0.526337
+0.478027 0.200446 0.0506149 0.738792 0.384594;
+#X coords 0 1 100 0 800 400 1;
+#X restore 38 165 graph;
+#X floatatom 284 37 5 0 100 1 indice(x) - -, f 5;
+#X obj 18 104 f;
+#X floatatom 79 57 5 0 0 0 - - -, f 5;
+#X obj 44 104 + 1;
+#X msg 79 100 stop;
+#X obj 18 42 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X obj 18 60 t b 0;
+#X floatatom 199 92 8 0 0 0 - - -, f 8;
+#X obj 199 51 bang;
+#X obj 79 79 sel 100;
+#X obj 18 82 metro 30;
+#X obj 127 71 s dibtriang;
+#X text 37 40 <-(re)dibujar tabla;
+#X obj 199 72 triang;
+#X obj 284 17 r dibtriang;
+#X obj 199 109 tabwrite triang;
+#X obj 394 20 loadbang;
+#X msg 394 40 \; triang bounds 0 1 100 0 \; triang xlabel -0.02 0 10
+20 30 40 50 60 70 80 90 100 \; triang xticks 0 10 1 \; triang ylabel
+-2 0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 \; triang yticks 0 0.1 1
+;
+#X text 394 126 Triangularly distributed random numbers. Outputs values
+between 0 anf 1;
+#X connect 1 0 9 0;
+#X connect 1 0 16 1;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 3 0 10 0;
+#X connect 3 0 12 0;
+#X connect 4 0 2 1;
+#X connect 5 0 11 0;
+#X connect 6 0 7 0;
+#X connect 7 0 11 0;
+#X connect 7 1 2 0;
+#X connect 8 0 16 0;
+#X connect 9 0 14 0;
+#X connect 10 0 5 0;
+#X connect 11 0 2 0;
+#X connect 14 0 8 0;
+#X connect 15 0 1 0;
+#X connect 17 0 18 0;
+#X restore 93 114 pd triang;
+#X text 14 38 PROBABILISTICAL FUNCTIONS. This patch is intended to
+show graphically how several random probabilistical functions work.
+;
+#X text 243 162 Angel Faraldo. 2006;
+#X text 30 135 This patch is dependent of MAXLIB external.;
+#X obj 15 14 declare -stdpath maxlib;
