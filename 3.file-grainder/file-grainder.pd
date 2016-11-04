@@ -1,14 +1,14 @@
 #N struct timeline float x float y;
 #N struct error float x float y float width;
-#N canvas 10 23 609 551 10;
+#N canvas 477 23 609 551 10;
 #X declare -path abs -stdpath maxlib -stdpath hcs -stdpath iemlib -stdpath
-mapping -stdpath zexy -stdpath ggee -stdpath purepd -stdpath motex
--stdpath cyclone;
+mapping -stdpath ggee -stdpath purepd -stdpath motex -stdpath cyclone
+-stdpath zexy;
 #X obj 545 508 nbx 5 14 -1e+37 1e+37 0 0 NOSY \$0-sizeSecs DURATION:
--60 8 0 10 -262144 -258113 -258113 12.0628 256;
+-60 8 0 10 -262144 -258113 -258113 0 256;
 #N canvas 39 1058 822 523 wave 0;
-#X scalar timeline 0.5 -1 \;;
-#X scalar error 0.95 -1 0.05 \;;
+#X scalar timeline 0.25 -1 \;;
+#X scalar error 0.45 -1 0.1 \;;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array \$0-soundfile 531968 float 0;
 #X coords 0 1 531967 -1 600 150 2 0 0;
@@ -84,12 +84,12 @@ f 5;
 #X obj 3 89 cnv 15 215 125 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X obj 10 129 tgl 15 0 \$0-start \$0-initStart empty 17 7 0 10 -228856
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 10 170 bng 15 250 50 0 \$0-playFile asdfasd empty 17 7 0 10
 -228856 -1 -1;
 #X floatatom 10 149 0 0.1 10 0 - #0-speedRatio_p #0-speedRatio;
 #X obj 10 190 tgl 15 0 \$0-stopEnd nothing empty 17 7 0 10 -228856
--1 -1 1 1;
+-1 -1 0 1;
 #X text 28 188 stop at the end of the file?;
 #X obj 10 109 bng 15 250 50 0 \$0-loadFile \$0-loadFile_p empty 17
 7 0 10 -228856 -1 -1;
@@ -154,8 +154,36 @@ f 5;
 #X obj 26 93 r \$0-pre_maxGrains;
 #X obj 16 116 pack 0 \$0;
 #N canvas 0 22 191 367 \$0-grains 0;
-#X obj 25 50 fileGrain 1 1004;
-#X obj 25 75 fileGrain 2 1004;
+#X obj 25 50 fileGrain 1 1003;
+#X obj 25 75 fileGrain 2 1003;
+#X obj 25 100 fileGrain 3 1003;
+#X obj 25 125 fileGrain 4 1003;
+#X obj 25 150 fileGrain 5 1003;
+#X obj 25 175 fileGrain 6 1003;
+#X obj 25 200 fileGrain 7 1003;
+#X obj 25 225 fileGrain 8 1003;
+#X obj 25 250 fileGrain 9 1003;
+#X obj 25 275 fileGrain 10 1003;
+#X obj 25 300 fileGrain 11 1003;
+#X obj 25 325 fileGrain 12 1003;
+#X obj 25 350 fileGrain 13 1003;
+#X obj 25 375 fileGrain 14 1003;
+#X obj 25 400 fileGrain 15 1003;
+#X obj 25 425 fileGrain 16 1003;
+#X obj 25 450 fileGrain 17 1003;
+#X obj 25 475 fileGrain 18 1003;
+#X obj 25 500 fileGrain 19 1003;
+#X obj 25 525 fileGrain 20 1003;
+#X obj 25 550 fileGrain 21 1003;
+#X obj 25 575 fileGrain 22 1003;
+#X obj 25 600 fileGrain 23 1003;
+#X obj 25 625 fileGrain 24 1003;
+#X obj 25 650 fileGrain 25 1003;
+#X obj 25 675 fileGrain 26 1003;
+#X obj 25 700 fileGrain 27 1003;
+#X obj 25 725 fileGrain 28 1003;
+#X obj 25 750 fileGrain 29 1003;
+#X obj 25 775 fileGrain 30 1003;
 #X restore 17 326 pd \$0-grains;
 #N canvas 4 23 1273 485 mapping 0;
 #X obj 128 281 line 0 1;
@@ -927,7 +955,6 @@ f 5;
 #X connect 6 0 3 1;
 #X connect 8 0 4 0;
 #X restore 17 283 pd loadbang;
-#X msg 16 48 2;
 #X msg 16 138 \$2 \; \$2-initStart 0 \; pd dsp 0 \; \$2-maxGrains \$1
 \; \$2-active_p range 1 \$1;
 #N canvas 355 217 450 300 todo's 0;
@@ -1010,12 +1037,13 @@ f 5;
 #X connect 33 0 28 0;
 #X restore 91 283 pd env_graph;
 #X obj 254 47 getdir;
+#X msg 16 48 30;
 #X obj 140 445 declare -path abs -stdpath maxlib -stdpath hcs -stdpath
-iemlib -stdpath mapping -stdpath zexy -stdpath ggee -stdpath purepd
--stdpath motex -stdpath cyclone;
-#X connect 0 0 34 0;
+iemlib -stdpath mapping -stdpath ggee -stdpath purepd -stdpath motex
+-stdpath cyclone -stdpath zexy;
+#X connect 0 0 38 0;
 #X connect 2 0 3 0;
-#X connect 3 0 35 0;
+#X connect 3 0 34 0;
 #X connect 6 0 7 0;
 #X connect 7 0 21 0;
 #X connect 8 0 9 0;
@@ -1024,7 +1052,7 @@ iemlib -stdpath mapping -stdpath zexy -stdpath ggee -stdpath purepd
 #X connect 10 0 9 1;
 #X connect 10 0 25 0;
 #X connect 11 0 17 0;
-#X connect 12 0 38 0;
+#X connect 12 0 37 0;
 #X connect 14 0 10 0;
 #X connect 15 0 30 0;
 #X connect 17 0 19 0;
@@ -1037,16 +1065,16 @@ iemlib -stdpath mapping -stdpath zexy -stdpath ggee -stdpath purepd
 #X connect 23 0 8 0;
 #X connect 27 0 26 0;
 #X connect 28 0 26 1;
-#X connect 34 0 3 0;
-#X connect 34 0 29 0;
-#X connect 35 0 15 0;
-#X connect 38 0 6 0;
+#X connect 34 0 15 0;
+#X connect 37 0 6 0;
+#X connect 38 0 3 0;
+#X connect 38 0 29 0;
 #X restore 545 7 pd patch;
 #X obj 363 182 bng 8 250 50 0 \$0-filterQMean_l nothing empty 17 7
 0 10 -228856 -1 -1;
 #X obj 413 182 bng 8 250 50 0 \$0-filterQDev_l nothing empty 17 7 0
 10 -228856 -1 -1;
-#X obj 555 262 nbx 3 14 1 2 0 0 \$0-active \$0-active_p empty 0 -8
+#X obj 555 262 nbx 3 14 1 30 0 0 \$0-active \$0-active_p empty 0 -8
 0 10 -228856 -1 -1 1 256;
 #X text 16 4 GENERAL SETTINGS;
 #X text 5 528 angelfaraldo@gmail.com - 2013;
