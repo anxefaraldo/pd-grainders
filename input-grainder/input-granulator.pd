@@ -73,17 +73,17 @@ or the total range.;
 #X obj 75 143 nbx 5 20 5 100 0 0 \$0-grainDur.m \$0-load.grainDur.m
 duration 0 -14 1 14 -1 -262144 -262144 90 256;
 #X obj 75 93 nbx 5 20 20 500 0 0 \$0-iot.m \$0-load.iot.m iot 0 -14
-1 14 -1 -262144 -262144 100 256;
+1 14 -1 -262144 -262144 279 256;
 #X obj 75 42 nbx 5 20 0 10000 0 0 \$0-delread.m \$0-load.delread.m
-delread 0 -14 1 14 -1 -262144 -262144 1000 256;
+delread 0 -14 1 14 -1 -262144 -262144 1096 256;
 #X obj 75 293 nbx 5 20 -12 12 0 0 \$0-pitch.m \$0-load.pitch.m pitch
-0 -14 1 14 -1 -262144 -262144 0 256;
+0 -14 1 14 -1 -262144 -262144 12 256;
 #X obj 75 193 nbx 5 20 1 99 0 0 \$0-env.m \$0-load.env.m envelope 0
 -14 1 14 -1 -262144 -262144 10 256;
 #X obj 75 243 nbx 5 20 60 100 0 0 \$0-amp.m \$0-load.amp.m dynamics
 0 -14 1 14 -1 -262144 -262144 90 256;
 #X obj 15 42 nbx 2 20 0 50 0 0 \$0-voices \$0-load.voices grains 0
--14 1 14 -33289 -262144 -262144 0 256;
+-14 1 14 -33289 -262144 -262144 22 256;
 #X obj 152 12 cnv 15 56 320 empty empty DEVIATION 2 315 1 10 -99865
 -33289 0;
 #X obj 157 143 nbx 3 20 0 100 0 0 \$0-grainDur.d \$0-load.grainDur.d
@@ -93,12 +93,12 @@ empty 52 8 1 14 -1 -262144 -262144 0 256;
 #X obj 158 42 nbx 3 20 0 100 0 0 \$0-delread.d \$0-load.delread.d empty
 62 8 1 14 -1 -262144 -1 30 256;
 #X obj 156 293 nbx 3 20 0 100 0 0 \$0-pitch.d \$0-load.pitch.d empty
-52 8 1 14 -1 -262144 -1 1 256;
+52 8 1 14 -1 -262144 -1 13 256;
 #X obj 156 243 nbx 3 20 0 100 0 0 \$0-amp.d \$0-load.amp.d empty 52
 8 1 14 -1 -262144 -262144 100 256;
 #X obj 156 193 nbx 3 20 0 100 0 0 \$0-env.d \$0-load.env.d empty 52
 8 1 14 -1 -262144 -1 5 256;
-#N canvas 535 50 581 524 patch 1;
+#N canvas 1093 144 581 524 patch 1;
 #X obj 269 121 s \$0-randCurve;
 #X floatatom 269 100 5 0 0 0 - - -, f 5;
 #N canvas 372 349 435 317 multiple-instances 0;
@@ -161,59 +161,59 @@ empty 52 8 1 14 -1 -262144 -262144 0 256;
 #X obj 22 270 catch~ \$0-LeftOut;
 #X obj 25 199 s~ \$0-input;
 #N canvas 599 22 173 700 grains 0;
-#X obj 25 50 inputGrain 1003 1;
-#X obj 25 75 inputGrain 1003 2;
-#X obj 25 100 inputGrain 1003 3;
-#X obj 25 125 inputGrain 1003 4;
-#X obj 25 150 inputGrain 1003 5;
-#X obj 25 175 inputGrain 1003 6;
-#X obj 25 200 inputGrain 1003 7;
-#X obj 25 225 inputGrain 1003 8;
-#X obj 25 250 inputGrain 1003 9;
-#X obj 25 275 inputGrain 1003 10;
-#X obj 25 300 inputGrain 1003 11;
-#X obj 25 325 inputGrain 1003 12;
-#X obj 25 350 inputGrain 1003 13;
-#X obj 25 375 inputGrain 1003 14;
-#X obj 25 400 inputGrain 1003 15;
-#X obj 25 425 inputGrain 1003 16;
-#X obj 25 450 inputGrain 1003 17;
-#X obj 25 475 inputGrain 1003 18;
-#X obj 25 500 inputGrain 1003 19;
-#X obj 25 525 inputGrain 1003 20;
-#X obj 25 550 inputGrain 1003 21;
-#X obj 25 575 inputGrain 1003 22;
-#X obj 25 600 inputGrain 1003 23;
-#X obj 25 625 inputGrain 1003 24;
-#X obj 25 650 inputGrain 1003 25;
-#X obj 25 675 inputGrain 1003 26;
-#X obj 25 700 inputGrain 1003 27;
-#X obj 25 725 inputGrain 1003 28;
-#X obj 25 750 inputGrain 1003 29;
-#X obj 25 775 inputGrain 1003 30;
-#X obj 25 800 inputGrain 1003 31;
-#X obj 25 825 inputGrain 1003 32;
-#X obj 25 850 inputGrain 1003 33;
-#X obj 25 875 inputGrain 1003 34;
-#X obj 25 900 inputGrain 1003 35;
-#X obj 25 925 inputGrain 1003 36;
-#X obj 25 950 inputGrain 1003 37;
-#X obj 25 975 inputGrain 1003 38;
-#X obj 25 1000 inputGrain 1003 39;
-#X obj 25 1025 inputGrain 1003 40;
-#X obj 25 1050 inputGrain 1003 41;
-#X obj 25 1075 inputGrain 1003 42;
-#X obj 25 1100 inputGrain 1003 43;
-#X obj 25 1125 inputGrain 1003 44;
-#X obj 25 1150 inputGrain 1003 45;
-#X obj 25 1175 inputGrain 1003 46;
-#X obj 25 1200 inputGrain 1003 47;
-#X obj 25 1225 inputGrain 1003 48;
-#X obj 25 1250 inputGrain 1003 49;
-#X obj 25 1275 inputGrain 1003 50;
+#X obj 25 50 inputGrain 6583 1;
+#X obj 25 75 inputGrain 6583 2;
+#X obj 25 100 inputGrain 6583 3;
+#X obj 25 125 inputGrain 6583 4;
+#X obj 25 150 inputGrain 6583 5;
+#X obj 25 175 inputGrain 6583 6;
+#X obj 25 200 inputGrain 6583 7;
+#X obj 25 225 inputGrain 6583 8;
+#X obj 25 250 inputGrain 6583 9;
+#X obj 25 275 inputGrain 6583 10;
+#X obj 25 300 inputGrain 6583 11;
+#X obj 25 325 inputGrain 6583 12;
+#X obj 25 350 inputGrain 6583 13;
+#X obj 25 375 inputGrain 6583 14;
+#X obj 25 400 inputGrain 6583 15;
+#X obj 25 425 inputGrain 6583 16;
+#X obj 25 450 inputGrain 6583 17;
+#X obj 25 475 inputGrain 6583 18;
+#X obj 25 500 inputGrain 6583 19;
+#X obj 25 525 inputGrain 6583 20;
+#X obj 25 550 inputGrain 6583 21;
+#X obj 25 575 inputGrain 6583 22;
+#X obj 25 600 inputGrain 6583 23;
+#X obj 25 625 inputGrain 6583 24;
+#X obj 25 650 inputGrain 6583 25;
+#X obj 25 675 inputGrain 6583 26;
+#X obj 25 700 inputGrain 6583 27;
+#X obj 25 725 inputGrain 6583 28;
+#X obj 25 750 inputGrain 6583 29;
+#X obj 25 775 inputGrain 6583 30;
+#X obj 25 800 inputGrain 6583 31;
+#X obj 25 825 inputGrain 6583 32;
+#X obj 25 850 inputGrain 6583 33;
+#X obj 25 875 inputGrain 6583 34;
+#X obj 25 900 inputGrain 6583 35;
+#X obj 25 925 inputGrain 6583 36;
+#X obj 25 950 inputGrain 6583 37;
+#X obj 25 975 inputGrain 6583 38;
+#X obj 25 1000 inputGrain 6583 39;
+#X obj 25 1025 inputGrain 6583 40;
+#X obj 25 1050 inputGrain 6583 41;
+#X obj 25 1075 inputGrain 6583 42;
+#X obj 25 1100 inputGrain 6583 43;
+#X obj 25 1125 inputGrain 6583 44;
+#X obj 25 1150 inputGrain 6583 45;
+#X obj 25 1175 inputGrain 6583 46;
+#X obj 25 1200 inputGrain 6583 47;
+#X obj 25 1225 inputGrain 6583 48;
+#X obj 25 1250 inputGrain 6583 49;
+#X obj 25 1275 inputGrain 6583 50;
 #X restore 402 54 pd grains;
 #N canvas 503 179 220 83 input 0;
-#X obj 25 25 inputBuffer 1003 10000;
+#X obj 25 25 inputBuffer 6583 10000;
 #X restore 463 54 pd input;
 #N canvas 460 22 501 598 mapping... 0;
 #X msg -395 -831 range \$1 \$2;
@@ -322,12 +322,12 @@ empty 52 8 1 14 -1 -262144 -262144 0 256;
 #X obj 81 466 *~;
 #X obj 96 421 line~;
 #X msg 96 401 \$1 100;
-#X obj 40 99 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 40 99 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #X text 267 73 (grain and input instances inside the subpatches);
 #X obj 81 359 r~ \$0-input;
 #X obj 98 382 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 1500 1;
 #X obj 96 445 *~;
 #N canvas 370 22 212 457 load 0;
 #X obj -73 -901 loadbang;

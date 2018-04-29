@@ -1,4 +1,4 @@
-#N canvas 244 22 641 734 10;
+#N canvas 452 23 641 734 10;
 #X text 18 0 TRIANGULAR DISTRIBUTION;
 #X obj 84 370 +;
 #X obj 99 348 random 1000;
