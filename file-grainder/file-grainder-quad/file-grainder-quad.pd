@@ -1,55 +1,43 @@
 #N struct timeline float x float y;
 #N struct error float x float y float width;
-#N canvas 494 344 609 551 10;
+#N canvas 606 38 609 551 10;
 #X declare -path abs -stdpath maxlib -stdpath hcs -stdpath iemlib -stdpath
 mapping -stdpath ggee -stdpath purepd -stdpath motex -stdpath cyclone
 -stdpath zexy;
-#X obj 545 508 nbx 5 14 -1e+37 1e+37 0 0 NOSY \$0-sizeSecs DURATION:
--60 8 0 10 -262144 -258113 -258113 0 256;
-#N canvas 39 1058 822 523 wave 0;
-#X scalar timeline 0.25 -1 \;;
-#X scalar error 0.45 -1 0.1 \;;
-#N canvas 0 22 450 278 (subpatch) 0;
-#X array \$0-soundfile 2.16964e+07 float 0;
-#X coords 0 1 2.16964e+07 -1 600 150 2 0 0;
-#X restore 100 200 graph;
-#X coords 0 -1 1 1 600 150 2 100 200;
-#X restore 3 375 pd wave;
 #X obj 3 2 cnv 15 600 80 empty empty empty 20 12 0 14 -233017 -66577
 0;
-#X floatatom 7 23 3 0 500 0 - #0-pre_maxGrains_p #0-pre_maxGrains;
-#X floatatom 7 43 3 0 0 0 - #0-speedLimit_p #0-speedLimit;
+#X floatatom 7 23 3 0 500 0 - #0-pre_maxGrains_p #0-pre_maxGrains,
+f 3;
+#X floatatom 7 43 3 0 0 0 - #0-speedLimit_p #0-speedLimit, f 3;
 #X obj 3 221 cnv 15 600 135 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X floatatom 24 321 5 1 1000 0 - #0-grainSizeMean_p #0-grainSizeMean
-;
+, f 5;
 #X floatatom 75 321 0 0 500 0 - #0-grainSizeDev_p #0-grainSizeDev;
 #X text 24 335 mean;
 #X text 74 336 dev;
-#X floatatom 304 321 5 0 1000 0 - #0-silenceMean_p #0-silenceMean;
-#X floatatom 354 321 5 0 500 0 - #0-silenceDev_p #0-silenceDev;
+#X floatatom 304 321 5 0 1000 0 - #0-silenceMean_p #0-silenceMean,
+f 5;
+#X floatatom 354 321 5 0 500 0 - #0-silenceDev_p #0-silenceDev, f
+5;
 #X text 304 335 mean;
 #X text 344 336 dev;
-#X floatatom 504 321 4 0 1200 0 - #0-detune_p #0-detune;
-#X floatatom 24 261 5 0 112 0 - #0-volumeMean_p #0-volumeMean;
-#X floatatom 74 261 5 0 56 0 - #0-volumeDev_p #0-volumeDev;
+#X floatatom 504 321 4 0 1200 0 - #0-detune_p #0-detune, f 4;
+#X floatatom 24 261 5 0 112 0 - #0-volumeMean_p #0-volumeMean, f 5
+;
+#X floatatom 74 261 5 0 56 0 - #0-volumeDev_p #0-volumeDev, f 5;
 #X text 24 275 mean;
 #X text 74 276 dev;
-#X floatatom 164 261 5 -45 45 0 - #0-panMean_p #0-panMean;
-#X floatatom 214 261 5 0 45 0 - #0-panDev_p #0-panDev;
-#X text 164 275 mean;
-#X text 214 276 dev;
 #X floatatom 164 320 5 0 100 0 - #0-readOffsetMean_p #0-readOffsetMean
-;
+, f 5;
 #X floatatom 215 321 5 0 50 0 - #0-readOffsetDev_p #0-readOffsetDev
-;
+, f 5;
 #X text 164 335 mean;
 #X text 214 335 dev;
 #X text 22 300 grain size (ms);
 #X text 162 300 reading point (%);
 #X text 302 300 silence (ms);
 #X text 22 240 volume (dB);
-#X text 162 240 pan (-45/45);
 #X obj 13 321 bng 8 250 50 0 \$0-grainSizeMean_l nothing empty 17 7
 0 10 -228856 -1 -1;
 #X obj 63 321 bng 8 250 50 0 \$0-grainSizeDev_l nothing empty 17 7
@@ -70,17 +58,13 @@ mapping -stdpath ggee -stdpath purepd -stdpath motex -stdpath cyclone
 -228856 -1 -1;
 #X obj 63 261 bng 8 250 50 0 \$0-volumeDev_l nothing empty 17 7 0 10
 -228856 -1 -1;
-#X obj 153 261 bng 8 250 50 0 \$0-panMean_l nothing empty 17 7 0 10
--228856 -1 -1;
-#X obj 203 261 bng 8 250 50 0 \$0-panDev_l nothing empty 17 7 0 10
--228856 -1 -1;
 #X obj 543 262 bng 8 250 50 0 \$0-active_l frfrfrf empty 17 7 0 10
 -228856 -1 -1;
 #X text 20 222 GRAINDER;
 #X obj 3 89 cnv 15 215 125 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X obj 10 129 tgl 15 0 \$0-start \$0-initStart empty 17 7 0 10 -228856
--1 -1 0 1;
+-1 -1 1 1;
 #X obj 10 170 bng 15 250 50 0 \$0-playFile asdfasd empty 17 7 0 10
 -228856 -1 -1;
 #X floatatom 10 149 0 0.1 10 0 - #0-speedRatio_p #0-speedRatio;
@@ -97,21 +81,23 @@ mapping -stdpath ggee -stdpath purepd -stdpath motex -stdpath cyclone
 #X obj 226 89 cnv 15 377 125 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X floatatom 244 182 5 30 10000 0 - #0-filterFreqMean_p #0-filterFreqMean
-;
+, f 5;
 #X floatatom 294 182 5 0 1000 0 - #0-filterFreqDev_p #0-filterFreqDev
-;
+, f 5;
 #X text 244 196 mean;
 #X text 294 197 dev;
 #X obj 233 182 bng 8 250 50 0 \$0-filterFreqMean_l nothing empty 17
 7 0 10 -228856 -1 -1;
 #X obj 283 182 bng 8 250 50 0 \$0-filterFreqDev_l cccccccccccc empty
 17 7 0 10 -228856 -1 -1;
-#X floatatom 374 181 5 0 100 0 - #0-filterQMean_p #0-filterQMean;
-#X floatatom 425 182 5 0 50 0 - #0-filterQDev_p #0-filterQDev;
+#X floatatom 374 181 5 0 100 0 - #0-filterQMean_p #0-filterQMean,
+f 5;
+#X floatatom 425 182 5 0 50 0 - #0-filterQDev_p #0-filterQDev, f 5
+;
 #X text 374 196 mean;
 #X text 425 196 dev;
-#N canvas 599 31 498 520 patch 0;
-#X obj 17 33 loadbang;
+#N canvas 599 31 598 673 patch 0;
+#X obj 18 33 loadbang;
 #N canvas 0 22 229 292 makeGrains 0;
 #X obj 42 84 until;
 #X obj 68 112 + 1;
@@ -144,41 +130,41 @@ mapping -stdpath ggee -stdpath purepd -stdpath motex -stdpath cyclone
 #X connect 10 0 13 0;
 #X connect 11 0 9 0;
 #X connect 13 0 12 0;
-#X restore 18 311 pd makeGrains;
-#X obj 27 100 r \$0-pre_maxGrains;
-#X obj 17 123 pack 0 \$0;
+#X restore 19 311 pd makeGrains;
+#X obj 28 100 r \$0-pre_maxGrains;
+#X obj 18 123 pack 0 \$0;
 #N canvas 0 22 191 367 \$0-grains 0;
-#X obj 25 50 fileGrain 1 4667;
-#X obj 25 75 fileGrain 2 4667;
-#X obj 25 100 fileGrain 3 4667;
-#X obj 25 125 fileGrain 4 4667;
-#X obj 25 150 fileGrain 5 4667;
-#X obj 25 175 fileGrain 6 4667;
-#X obj 25 200 fileGrain 7 4667;
-#X obj 25 225 fileGrain 8 4667;
-#X obj 25 250 fileGrain 9 4667;
-#X obj 25 275 fileGrain 10 4667;
-#X obj 25 300 fileGrain 11 4667;
-#X obj 25 325 fileGrain 12 4667;
-#X obj 25 350 fileGrain 13 4667;
-#X obj 25 375 fileGrain 14 4667;
-#X obj 25 400 fileGrain 15 4667;
-#X obj 25 425 fileGrain 16 4667;
-#X obj 25 450 fileGrain 17 4667;
-#X obj 25 475 fileGrain 18 4667;
-#X obj 25 500 fileGrain 19 4667;
-#X obj 25 525 fileGrain 20 4667;
-#X obj 25 550 fileGrain 21 4667;
-#X obj 25 575 fileGrain 22 4667;
-#X obj 25 600 fileGrain 23 4667;
-#X obj 25 625 fileGrain 24 4667;
-#X obj 25 650 fileGrain 25 4667;
-#X obj 25 675 fileGrain 26 4667;
-#X obj 25 700 fileGrain 27 4667;
-#X obj 25 725 fileGrain 28 4667;
-#X obj 25 750 fileGrain 29 4667;
-#X obj 25 775 fileGrain 30 4667;
-#X restore 18 333 pd \$0-grains;
+#X obj 25 50 fileGrain 1 3885;
+#X obj 25 75 fileGrain 2 3885;
+#X obj 25 100 fileGrain 3 3885;
+#X obj 25 125 fileGrain 4 3885;
+#X obj 25 150 fileGrain 5 3885;
+#X obj 25 175 fileGrain 6 3885;
+#X obj 25 200 fileGrain 7 3885;
+#X obj 25 225 fileGrain 8 3885;
+#X obj 25 250 fileGrain 9 3885;
+#X obj 25 275 fileGrain 10 3885;
+#X obj 25 300 fileGrain 11 3885;
+#X obj 25 325 fileGrain 12 3885;
+#X obj 25 350 fileGrain 13 3885;
+#X obj 25 375 fileGrain 14 3885;
+#X obj 25 400 fileGrain 15 3885;
+#X obj 25 425 fileGrain 16 3885;
+#X obj 25 450 fileGrain 17 3885;
+#X obj 25 475 fileGrain 18 3885;
+#X obj 25 500 fileGrain 19 3885;
+#X obj 25 525 fileGrain 20 3885;
+#X obj 25 550 fileGrain 21 3885;
+#X obj 25 575 fileGrain 22 3885;
+#X obj 25 600 fileGrain 23 3885;
+#X obj 25 625 fileGrain 24 3885;
+#X obj 25 650 fileGrain 25 3885;
+#X obj 25 675 fileGrain 26 3885;
+#X obj 25 700 fileGrain 27 3885;
+#X obj 25 725 fileGrain 28 3885;
+#X obj 25 750 fileGrain 29 3885;
+#X obj 25 775 fileGrain 30 3885;
+#X restore 19 333 pd \$0-grains;
 #N canvas 4 23 1273 485 mapping 0;
 #X obj 128 281 line 0 1;
 #X obj 4 412 pack 0 0;
@@ -374,30 +360,28 @@ mapping -stdpath ggee -stdpath purepd -stdpath motex -stdpath cyclone
 #X connect 93 0 92 0;
 #X connect 94 0 29 0;
 #X connect 94 0 0 0;
-#X restore 18 354 pd mapping;
-#X obj 255 76 openpanel;
-#X obj 255 98 symbol;
-#X obj 255 213 soundfiler;
-#X obj 255 279 /;
-#X obj 270 258 samplerate~;
-#X obj 255 321 * 1000;
-#X obj 255 32 r \$0-loadFile;
-#X text 45 54 <-- number of grains per default;
-#X obj 270 235 r \$0-loadbang1;
-#X obj 17 219 pipe 100;
-#X obj 282 366 s \$0-sizeMs;
-#X obj 255 344 t b f;
-#X obj 255 410 s \$0-soundfile;
-#X msg 255 388 normalize;
-#X obj 300 151 symbol \$0-soundfile;
-#X obj 255 120 t s b;
-#X obj 255 172 pack s s;
-#X obj 261 300 s \$0-sizeSecs;
-#X obj 282 279 s \$0-SR;
-#X obj 18 437 catch~ \$0-out1;
-#X obj 39 457 catch~ \$0-out2;
-#X obj 27 77 s \$0-pre_maxGrains_p;
-#X msg 17 241 \$1 \; pd dsp 1 \; \$1-loadbang1 bang;
+#X restore 19 354 pd mapping;
+#X obj 256 76 openpanel;
+#X obj 256 98 symbol;
+#X obj 256 213 soundfiler;
+#X obj 256 279 /;
+#X obj 271 258 samplerate~;
+#X obj 256 321 * 1000;
+#X obj 256 32 r \$0-loadFile;
+#X text 46 54 <-- number of grains per default;
+#X obj 271 235 r \$0-loadbang1;
+#X obj 18 219 pipe 100;
+#X obj 283 366 s \$0-sizeMs;
+#X obj 256 344 t b f;
+#X obj 256 410 s \$0-soundfile;
+#X msg 256 388 normalize;
+#X obj 301 151 symbol \$0-soundfile;
+#X obj 256 120 t s b;
+#X obj 256 172 pack s s;
+#X obj 262 300 s \$0-sizeSecs;
+#X obj 283 279 s \$0-SR;
+#X obj 28 77 s \$0-pre_maxGrains_p;
+#X msg 18 241 \$1 \; pd dsp 1 \; \$1-loadbang1 bang;
 #N canvas 1 23 1258 699 midi 0;
 #X msg 115 132 1;
 #X obj 18 63 s pd-fileGrainder.pd;
@@ -824,8 +808,8 @@ mapping -stdpath ggee -stdpath purepd -stdpath motex -stdpath cyclone
 #X connect 208 1 164 0;
 #X connect 209 0 169 0;
 #X connect 209 1 166 0;
-#X restore 18 375 pd midi;
-#N canvas 438 22 421 493 waveform 0;
+#X restore 19 375 pd midi;
+#N canvas 438 23 421 493 waveform 0;
 #X obj 177 355 set timeline x;
 #X obj 78 444 set error x;
 #X obj 128 377 set error width;
@@ -918,26 +902,26 @@ mapping -stdpath ggee -stdpath purepd -stdpath motex -stdpath cyclone
 #X connect 28 0 26 1;
 #X connect 29 0 21 0;
 #X connect 30 0 18 0;
-#X restore 18 396 pd waveform;
-#N canvas 661 22 215 556 loadbang 0;
+#X restore 19 396 pd waveform;
+#N canvas 661 23 215 556 loadbang 0;
 #X obj 11 50 \$0;
 #X obj 11 31 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 11 11 r \$0-loadbang1;
-#X obj 11 485 metro;
-#X obj 11 441 delay 200;
-#X msg 11 462 1;
-#X obj 48 462 r \$0-speedLimit;
-#X obj 11 506 s \$0-clock;
-#X msg 11 70 bang \; \$1-grainSizeMean_p 80 \; \$1-grainSizeDev_p 10
-\; \$1-readOffsetMean_p 50 \; \$1-readOffsetDev_p 5 \; \$1-silenceMean_p
-5 \; \$1-silenceDev_p 5 \; \$1-octave_p 1 \; \$1-detune 10 \; \$1-volumeMean_p
-90 \; \$1-volumeDev_p 10 \; \$1-panMean_p 0 \; \$1-panDev_p 45 \; \$1-peakMean_p
-50 \; \$1-peakDev_p 0 \; \$1-attackMean_p 50 \; \$1-attackDev_p 0 \;
-\$1-releaseMean_p 50 \; \$1-releaseDev_p 0 \; \$1-changeRate_p 0.1
-\; \$1-filterFreqMean_p 1000 \; \$1-filterFreqDev_p 1000 \; \$1-filterQMean_p
-1 \; \$1-filterQDev_p 0 \; \$1-active_p 1 \; \$1-speedRatio_p 1 \;
-\$1-speedLimit_p 300 \; \$1-midiChannel_p 1;
+#X obj 11 415 metro;
+#X obj 11 371 delay 200;
+#X msg 11 392 1;
+#X obj 48 392 r \$0-speedLimit;
+#X obj 11 436 s \$0-clock;
+#X msg 11 70 bang \; \$1-grainSizeMean_p 10 \; \$1-grainSizeDev_p 100
+\; \$1-readOffsetMean_p 50 \; \$1-readOffsetDev_p 50 \; \$1-silenceMean_p
+500 \; \$1-silenceDev_p 500 \; \$1-octave_p 1 \; \$1-detune_p 50 \;
+\$1-volumeMean_p 110 \; \$1-volumeDev_p 10 \; \$1-peakMean_p 50 \;
+\$1-peakDev_p 0 \; \$1-attackMean_p 50 \; \$1-attackDev_p 0 \; \$1-releaseMean_p
+50 \; \$1-releaseDev_p 0 \; \$1-changeRate_p 0.1 \; \$1-filterFreqMean_p
+1000 \; \$1-filterFreqDev_p 1000 \; \$1-filterQMean_p 1 \; \$1-filterQDev_p
+0 \; \$1-active_p 1 \; \$1-speedRatio_p 1 \; \$1-speedLimit_p 300 \;
+\$1-midiChannel_p 1;
 #X connect 0 0 8 0;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
@@ -946,13 +930,13 @@ mapping -stdpath ggee -stdpath purepd -stdpath motex -stdpath cyclone
 #X connect 5 0 3 0;
 #X connect 6 0 3 1;
 #X connect 8 0 4 0;
-#X restore 18 290 pd loadbang;
-#X msg 17 145 \$2 \; \$2-initStart 0 \; pd dsp 0 \; \$2-maxGrains \$1
+#X restore 19 290 pd loadbang;
+#X msg 18 145 \$2 \; \$2-initStart 0 \; pd dsp 0 \; \$2-maxGrains \$1
 \; \$2-active_p range 1 \$1;
 #N canvas 355 217 450 300 todo's 0;
 #X text 12 25 -make graphics interactive;
 #X text 12 5 -add graphic information for grainsize;
-#X restore 18 416 pd todo's;
+#X restore 19 416 pd todo's;
 #N canvas 669 200 259 511 env_graph 0;
 #X obj 41 75 until;
 #X obj 41 192 moses;
@@ -1027,17 +1011,21 @@ mapping -stdpath ggee -stdpath purepd -stdpath motex -stdpath cyclone
 #X connect 31 0 26 0;
 #X connect 32 0 28 0;
 #X connect 33 0 28 0;
-#X restore 92 290 pd env_graph;
-#X msg 17 55 30;
-#X obj 141 452 declare -path abs -stdpath maxlib -stdpath hcs -stdpath
+#X restore 93 290 pd env_graph;
+#X msg 18 55 30;
+#X obj 142 452 declare -path abs -stdpath maxlib -stdpath hcs -stdpath
 iemlib -stdpath mapping -stdpath ggee -stdpath purepd -stdpath motex
 -stdpath cyclone -stdpath zexy;
-#X obj 255 54 ggee/getdir;
-#X msg 255 192 read -resize -maxsize 2.2e+07 \$1 \$2;
-#X obj 18 480 dac~;
-#X connect 0 0 35 0;
+#X obj 256 54 ggee/getdir;
+#X msg 256 192 read -resize -maxsize 2.2e+07 \$1 \$2;
+#X obj 18 454 catch~ \$0-out1;
+#X obj 40 474 catch~ \$0-out2;
+#X obj 18 557 dac~ 1 2 3 4;
+#X obj 66 494 catch~ \$0-out3;
+#X obj 89 514 catch~ \$0-out4;
+#X connect 0 0 33 0;
 #X connect 2 0 3 0;
-#X connect 3 0 32 0;
+#X connect 3 0 30 0;
 #X connect 6 0 7 0;
 #X connect 7 0 21 0;
 #X connect 8 0 9 0;
@@ -1046,32 +1034,33 @@ iemlib -stdpath mapping -stdpath ggee -stdpath purepd -stdpath motex
 #X connect 10 0 9 1;
 #X connect 10 0 24 0;
 #X connect 11 0 17 0;
-#X connect 12 0 37 0;
+#X connect 12 0 35 0;
 #X connect 14 0 10 0;
-#X connect 15 0 28 0;
+#X connect 15 0 26 0;
 #X connect 17 0 19 0;
 #X connect 17 1 16 0;
 #X connect 19 0 18 0;
 #X connect 20 0 22 1;
 #X connect 21 0 22 0;
 #X connect 21 1 20 0;
-#X connect 22 0 38 0;
-#X connect 25 0 39 0;
-#X connect 26 0 39 1;
-#X connect 32 0 15 0;
-#X connect 35 0 3 0;
-#X connect 35 0 27 0;
-#X connect 37 0 6 0;
-#X connect 38 0 8 0;
+#X connect 22 0 36 0;
+#X connect 30 0 15 0;
+#X connect 33 0 3 0;
+#X connect 33 0 25 0;
+#X connect 35 0 6 0;
+#X connect 36 0 8 0;
+#X connect 37 0 39 0;
+#X connect 38 0 39 1;
+#X connect 40 0 39 2;
+#X connect 41 0 39 3;
 #X restore 545 7 pd patch;
 #X obj 363 182 bng 8 250 50 0 \$0-filterQMean_l nothing empty 17 7
 0 10 -228856 -1 -1;
 #X obj 413 182 bng 8 250 50 0 \$0-filterQDev_l nothing empty 17 7 0
 10 -228856 -1 -1;
 #X obj 555 262 nbx 3 14 1 30 0 0 \$0-active \$0-active_p empty 0 -8
-0 10 -228856 -1 -1 1 256;
+0 10 -228856 -1 -1 18 256;
 #X text 16 4 GENERAL SETTINGS;
-#X text 5 528 angelfaraldo@gmail.com - 2013;
 #X text 552 241 voices;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array \$0-env 103 float 1;
@@ -1089,8 +1078,8 @@ iemlib -stdpath mapping -stdpath ggee -stdpath purepd -stdpath motex
 0.0101021 0.0064415 0.00361305 0.00160259 0.000400156 0 0;
 #X coords 0 1 102 0 30 30 1 0 0;
 #X restore 515 111 graph;
-#X floatatom 244 124 3 1 99 0 - #0-peakMean_p #0-peakMean;
-#X floatatom 285 125 3 0 50 0 - #0-peakDev_p #0-peakDev;
+#X floatatom 244 124 3 1 99 0 - #0-peakMean_p #0-peakMean, f 3;
+#X floatatom 285 125 3 0 50 0 - #0-peakDev_p #0-peakDev, f 3;
 #X obj 273 125 bng 8 250 50 0 \$0-peakDev_l nothing empty 17 7 0 10
 -228856 -1 -1;
 #X obj 233 129 bng 8 250 50 0 \$0-peakMean_l nothing empty 17 7 0 10
@@ -1098,14 +1087,17 @@ iemlib -stdpath mapping -stdpath ggee -stdpath purepd -stdpath motex
 #X text 242 161 filter frequency;
 #X text 372 161 filter Q;
 #X text 230 90 ENVELOPE;
-#X floatatom 334 124 3 1 99 0 - #0-attackMean_p #0-attackMean;
-#X floatatom 375 125 3 0 50 0 - #0-attackDev_p #0-attackDev;
+#X floatatom 334 124 3 1 99 0 - #0-attackMean_p #0-attackMean, f 3
+;
+#X floatatom 375 125 3 0 50 0 - #0-attackDev_p #0-attackDev, f 3;
 #X obj 363 125 bng 8 250 50 0 \$0-attackDev_l nothing empty 17 7 0
 10 -228856 -1 -1;
 #X obj 323 125 bng 8 250 50 0 \$0-attackMean_l nothing empty 17 7 0
 10 -228856 -1 -1;
-#X floatatom 424 124 3 1 99 0 - #0-releaseMean_p #0-releaseMean;
-#X floatatom 465 125 3 0 50 0 - #0-releaseDev_p #0-releaseDev;
+#X floatatom 424 124 3 1 99 0 - #0-releaseMean_p #0-releaseMean, f
+3;
+#X floatatom 465 125 3 0 50 0 - #0-releaseDev_p #0-releaseDev, f 3
+;
 #X obj 453 125 bng 8 250 50 0 \$0-releaseDev_l nothing empty 17 7 0
 10 -228856 -1 -1;
 #X obj 413 125 bng 8 250 50 0 \$0-releaseMean_l nothing empty 17 7
@@ -1113,16 +1105,28 @@ iemlib -stdpath mapping -stdpath ggee -stdpath purepd -stdpath motex
 #X text 242 104 peak (%);
 #X text 332 104 attack (%);
 #X text 422 104 release (%);
-#X floatatom 7 63 3 0 16 0 - #0-midiChannel_p #0-midiChannel;
+#X floatatom 7 63 3 0 16 0 - #0-midiChannel_p #0-midiChannel, f 3
+;
 #X text 34 63 midi channel (0 for OMNI MODE);
 #X obj 434 322 hradio 15 1 0 3 \$0-octave \$0-octave_p empty 0 -8 0
 10 -228856 -1 -1 1;
 #X text 432 300 octave;
 #X text 502 300 detune (cents);
 #X text 230 149 FILTER;
-#X floatatom 484 181 5 0.1 100 0 - #0-changeRate_p #0-changeRate;
+#X floatatom 484 181 5 0.1 100 0 - #0-changeRate_p #0-changeRate,
+f 5;
 #X obj 473 182 bng 8 250 50 0 \$0-changeRate_l nothing empty 17 7 0
 10 -228856 -1 -1;
 #X text 482 161 change rate (Hz);
 #X text 33 23 maximum number of grains;
 #X text 34 43 (ms.) speed limit for critical calculations;
+#N canvas 39 1058 822 523 wave 0;
+#X scalar timeline 0.25 -1 \;;
+#X scalar error 0.45 -1 0.1 \;;
+#N canvas 0 22 450 278 (subpatch) 0;
+#X array \$0-soundfile 38150 float 0;
+#X coords 0 1 38149 -1 600 150 2 0 0;
+#X restore 100 200 graph;
+#X coords 0 -1 1 1 600 150 2 100 200;
+#X restore 3 375 pd wave;
+#X text 5 528 angelfaraldo@gmail.com - 2013;

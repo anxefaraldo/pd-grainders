@@ -1,4 +1,4 @@
-#N canvas 5 23 1279 661 10;
+#N canvas 5 29 1279 643 10;
 #X declare -stdpath iemlib -stdpath zexy;
 #X obj 13 -1 cnv 15 1070 650 empty empty empty 20 12 0 14 -204786 -66577
 0;
@@ -140,7 +140,7 @@
 3.51524 83.7045 82.5495 81.3945 80.2395 79.0515 77.8635 76.6755 75.4875
 74.2996 73.1116 71.9236 70.7356 69.5476 68.3596 66.9646 65.5696 64.1747
 62.7797 49.0098 4.46026 58.5947 57.1997 55.8047 54.4098 53.0148 51.3318
-49.6488 47.9658 46.2828 44.5999 42.9169 41.2339 39.5509 37.8679 36.1849
+49.6488 47.9658 46.2828 36.2 42.9169 41.2339 39.5509 37.8679 36.1849
 34.502 32.819 31.136 29.453 97.4229 27.1336 25.5072 24.3758 23.2443
 22.1129 20.9815 19.8501 18.7187 17.5873 16.4558 15.3244 14.193 13.0616
 11.9302 11.2372 10.5442 9.8512 9.1582 8.46521 36.6799 99.0493 14.9002
@@ -151,7 +151,7 @@
 #X obj 1084 -2 cnv 15 150 200 empty empty empty 20 12 0 14 -260097
 -66577 0;
 #X obj 1157 53 nbx 3 15 1 127 0 0 empty empty dur. 0 -8 0 12 -262144
--1 -1 10 256;
+-1 -1 1 256;
 #X obj 1101 17 bng 50 250 50 0 empty empty play.score 0 -10 0 12 -262144
 -1 -1;
 #X obj 1105 115 tgl 50 0 enable.rec empty enable.rec 0 -8 0 12 -258113
@@ -316,29 +316,29 @@ ylabel -2 98 2 \; s.dyn.max ylabel -2 100 40 \;;
 #X connect 79 1 4 0;
 #X connect 80 0 9 0;
 #X restore 1100 77 pd sistema;
-#N canvas 518 208 360 418 rec 0;
-#X obj 113 371 writesf~ 2;
-#X obj 170 343 r~ granulator.rec.r;
-#X msg 66 276 start;
-#X msg 37 322 stop;
-#X obj 165 199 t b b;
-#X obj 113 253 pack f f f f f f;
-#X obj 147 34 r enable.rec;
-#X obj 114 57 spigot;
-#X obj 114 12 r reset.rec;
-#X msg -6 163 1;
-#X obj 114 81 t b b b b b b;
-#X obj 79 154 delay;
-#X obj 106 134 + 2000;
-#X obj -6 187 s rec.int;
-#X msg 37 356 0;
-#X obj 106 113 r score.duration.2;
-#X obj 150 323 r~ granulator.rec.l;
-#X msg 113 299 open -bytes 3 ./\$1.wav;
-#X obj 212 227 zexy/time;
-#X obj 139 227 zexy/date;
-#X obj 165 177 iemlib/once;
-#X obj 114 275 zexy/makesymbol %s|%s|%s@%s%s%s%;
+#N canvas 518 208 449 458 rec 1;
+#X obj 171 387 writesf~ 2;
+#X obj 228 359 r~ granulator.rec.r;
+#X msg 124 292 start;
+#X msg 95 338 stop;
+#X obj 223 215 t b b;
+#X obj 171 269 pack f f f f f f;
+#X obj 205 50 r enable.rec;
+#X obj 172 73 spigot;
+#X obj 172 28 r reset.rec;
+#X msg 52 179 1;
+#X obj 172 97 t b b b b b b;
+#X obj 137 170 delay;
+#X obj 164 150 + 2000;
+#X obj 52 203 s rec.int;
+#X msg 95 372 0;
+#X obj 164 129 r score.duration.2;
+#X obj 208 339 r~ granulator.rec.l;
+#X msg 171 315 open -bytes 3 ./\$1.wav;
+#X obj 270 243 zexy/time;
+#X obj 197 243 zexy/date;
+#X obj 223 193 iemlib/once;
+#X obj 172 291 zexy/makesymbol %s|%s|%s@%s%s%s%;
 #X connect 1 0 0 1;
 #X connect 2 0 0 0;
 #X connect 3 0 0 0;
