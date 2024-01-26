@@ -76,6 +76,8 @@
 #X obj 256 629 rango dyn;
 #X obj 31 651 osc~;
 #X obj 414 251 rango env;
+#X floatatom 222 356 5 0 0 0 - - - 12;
+#X floatatom 365 345 5 0 0 0 - - - 12;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 1 4 0 32.................h....zG...fH....8A...nB....;
@@ -93,6 +95,7 @@
 #X connect 10 0 59 0;
 #X connect 11 0 12 0;
 #X connect 12 0 14 1;
+#X connect 12 0 77 0;
 #X connect 13 0 48 0;
 #X connect 13 0 45 0 32.................J....7B...fB....u....PA....;
 #X connect 14 0 13 0;
@@ -121,6 +124,7 @@
 #X connect 40 0 36 1;
 #X connect 42 0 43 0;
 #X connect 43 0 45 1 32..................A...j3+++OP....I9+++6D....;
+#X connect 43 0 78 0;
 #X connect 44 0 42 0;
 #X connect 45 0 46 0;
 #X connect 46 0 48 1;
