@@ -7,7 +7,7 @@
 #X obj 39 104 *;
 #X obj 6 133 +;
 #X obj 73 11 inlet;
-#X obj 73 32 maxlib/triang;
+#X obj 73 32 kg-triang;
 #X connect 1 0 6 1;
 #X connect 1 1 5 1;
 #X connect 2 0 1 0;
