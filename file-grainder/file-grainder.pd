@@ -4,8 +4,8 @@
 #X declare -path abs -lib iemlib -path mapping -path purepd -path else -path cyclone -lib zexy;
 #X obj 545 508 nbx 5 14 -1e+37 1e+37 0 0 NOSY \$0-sizeSecs DURATION: -60 8 0 10 #fcfcfc #fc0400 #fc0400 0 256;
 #N canvas 39 1058 822 523 wave 1;
-#X scalar timeline 0.138 -1 \;;
-#X scalar error 0.166 -1 0.22 \;;
+#X scalar timeline 0.25 -1 \;;
+#X scalar error 0.45 -1 0.1 \;;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array \$0-soundfile 65559 float 0;
 #X coords 0 1 65558 -1 600 150 2 0 0;
