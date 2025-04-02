@@ -38,7 +38,7 @@
 #X obj 39 287 s \$0-initStart;
 #X msg 39 263 0;
 #X obj 38 106 t b b s, f 13;
-#N canvas 648 23 311 459 patch 0;
+#N canvas 648 23 311 459 patch 1;
 #X obj 26 568 dac~, f 19;
 #X obj 10 43 loadbang;
 #X obj 10 104 delay 100;
@@ -60,7 +60,7 @@
 #X obj 149 502 expr~ atan($v1);
 #X obj 149 526 *~ 0.63662;
 #X obj 14 15 declare -path abs;
-#N canvas 481 23 166 699 instances 0;
+#N canvas 481 23 166 699 instances 1;
 #X obj 25 20 pulse-grain 1 \$0;
 #X obj 25 220 pulse-grain 9 \$0;
 #X obj 25 245 pulse-grain 10 \$0;
